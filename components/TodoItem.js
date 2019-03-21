@@ -1,6 +1,6 @@
 import React from 'react'
 
-class todoItem extends React.Component {
+class TodoItem extends React.Component {
   render() {
     const completedStyle = {
       fontStyle: 'italic',
@@ -20,4 +20,4 @@ class todoItem extends React.Component {
   }
 }
 
-export default todoItem
+export default TodoItem

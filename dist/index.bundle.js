@@ -24858,16 +24858,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var todoItem = function (_React$Component) {
-  _inherits(todoItem, _React$Component);
+var TodoItem = function (_React$Component) {
+  _inherits(TodoItem, _React$Component);
 
-  function todoItem() {
-    _classCallCheck(this, todoItem);
+  function TodoItem() {
+    _classCallCheck(this, TodoItem);
 
-    return _possibleConstructorReturn(this, (todoItem.__proto__ || Object.getPrototypeOf(todoItem)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (TodoItem.__proto__ || Object.getPrototypeOf(TodoItem)).apply(this, arguments));
   }
 
-  _createClass(todoItem, [{
+  _createClass(TodoItem, [{
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -24896,10 +24896,10 @@ var todoItem = function (_React$Component) {
     }
   }]);
 
-  return todoItem;
+  return TodoItem;
 }(_react2.default.Component);
 
-exports.default = todoItem;
+exports.default = TodoItem;
 
 /***/ })
 /******/ ]);
