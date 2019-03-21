@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "watch": "webpack -w"
+    "watch": "webpack -w",
+    "deploy": "gh-pages -d app"
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,9 @@
   "bugs": {
     "url": "https://github.com/pnguyen44/react-to-do/issues"
   },
-  "homepage": "https://github.com/pnguyen44/react-to-do#readme",
+  "homepage": "https://pnguyen44.github.io/react-to-do/",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },
