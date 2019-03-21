@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/pnguyen44/react-to-do/issues"
   },
-  "homepage": "https://pnguyen44.github.io/react-to-do/",
+  "homepage": "https://pnguyen44.github.io/react-to-do",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.4",
