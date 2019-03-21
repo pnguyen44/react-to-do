@@ -3,12 +3,12 @@ const path = require('path')
 module.exports = {
   entry: {
     app: [
-      './app/app.js'
+      './app/index'
     ],
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'app.pack.js'
+    filename: '[name].pack.js'
   },
   module: {
     rules: [
@@ -25,13 +25,6 @@ module.exports = {
         exclude: /node_modules/,
         test: /\.js$/
       }
-    ],
-    entry: {
-      index: './app/index'
-    }
-
+    ]
   }
-
-
-
 }
