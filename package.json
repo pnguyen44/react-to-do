@@ -1,35 +1,25 @@
 {
   "name": "react-to-do",
-  "version": "1.0.0",
-  "description": "## A basic to do app builted using react.js.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "watch": "webpack -w",
-    "deploy": "npm run watch && gh-pages -d app"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pnguyen44/react-to-do.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/pnguyen44/react-to-do/issues"
-  },
-  "homepage": "https://pnguyen44.github.io/react-to-do",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "gh-pages": "^2.0.1",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-scripts": "2.1.8"
   },
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
-  }
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
