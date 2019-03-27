@@ -40,10 +40,11 @@ const btnStyle = {
   background: '#f4f4f4',
   color: 'red',
   border: 'none',
-  fontStyle: 'bold',
+  fontSize: 14,
   padding: '5px 10px',
   float: 'right',
-  cursor: 'pointer'
+  cursor: 'pointer',
+  fontWeight: 900
 }
 
 export default TodoItem
