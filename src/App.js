@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import todosData from './todosData'
+import Todos from './components/Todos'
+
 
 class App extends Component {
+  state = {
+    todos: todosData
+  }
+
+handleChange = (id) => {
+  this.setState({ todos: this.state.todos.map(item => {
+    if(item.id === id) {
+      item.completed = !item.completed
+    }
+    return item
+  }) })
+}
+
   render() {
+    // console.log(todosData)
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className='App'>
+        <Todos todos={this.state.todos} handleChange={this.handleChange}/>
       </div>
     );
   }
