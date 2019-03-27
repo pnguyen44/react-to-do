@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 const headerStyle = {
   textAlign: 'center',
-  paddingTop: 5,
-  paddingBottom: 70,
+  paddingTop: 15,
+  paddingBottom: 50,
 }
 
 const Header = () => {
