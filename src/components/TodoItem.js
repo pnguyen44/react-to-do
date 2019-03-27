@@ -24,6 +24,7 @@ class TodoItem extends Component {
           onChange={this.props.handleChange.bind(this,id)}
         />{"  "}
           {name}
+          <button style={btnStyle}>X</button>
         </p>
       </div>
     )
@@ -32,6 +33,16 @@ class TodoItem extends Component {
 
 TodoItem.propTypes = {
   item: PropTypes.object.isRequired,
+}
+
+const btnStyle = {
+  background: '#f4f4f4',
+  color: 'red',
+  border: 'none',
+  fontStyle: 'bold',
+  padding: '5px 10px',
+  float: 'right',
+  cursor: 'pointer'
 }
 
 export default TodoItem
