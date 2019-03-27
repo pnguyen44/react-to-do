@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import todosData from './todosData'
 import Todos from './todo/Todos'
 import Header from './header/Header'
 import NewTodoItem from './todo/components/NewTodoItem'
+import About from './about/About'
+
 
 
 class App extends Component {
@@ -38,17 +41,24 @@ newTodoItem = (name) => {
   render() {
     // console.log(todosData)
     return (
-      <div className='todo-list'>
-        <div className='container'>
-          <Header/>
-            <NewTodoItem newTodoItem={this.newTodoItem}/>
-              <Todos
-                todos={this.state.todos}
-                toogleComplete={this.toogleComplete}
-                removeItem={this.removeItem}
-              />
+      <Router>
+        <div className='todo-list'>
+          <div className='container'>
+            <Header/>
+              <Route exact path='/' render={props => (
+                <React.Fragment>
+                  <NewTodoItem newTodoItem={this.newTodoItem}/>
+                    <Todos
+                      todos={this.state.todos}
+                      toogleComplete={this.toogleComplete}
+                      removeItem={this.removeItem}
+                    />
+                </React.Fragment>
+              )}/>
+              <Route path='/about' component={About}/>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
