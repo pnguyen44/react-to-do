@@ -14,6 +14,24 @@ a {
   text-decoration: none;
 }
 
+.container {
+  padding: 0 1rem;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  background: #555;
+  color: #fff;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #666;
+}
+
+
 .todo-list {
-  margin: 10px 80px;
+  margin: 5px 80px;
 }
