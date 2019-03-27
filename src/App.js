@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import todosData from './todosData'
 import Todos from './todo/Todos'
-
+import Header from './header/Header'
 
 class App extends Component {
   state = {
@@ -27,6 +27,7 @@ removeItem = (id) => {
     // console.log(todosData)
     return (
       <div className='todo-list'>
+      <Header/> 
         <Todos
           todos={this.state.todos}
           toogleComplete={this.toogleComplete}
