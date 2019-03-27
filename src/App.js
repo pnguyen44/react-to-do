@@ -25,13 +25,23 @@ removeItem = (id) => {
   this.setState({todos: [...this.state.todos].filter(item => item.id !== id)})
 }
 
+newTodoItem = (name) => {
+  console.log(name)
+  const newTodoItem = {
+    id: 211,
+    name,
+    completed: false
+  }
+  this.setState({todos: [...this.state.todos,newTodoItem]})
+}
+
   render() {
     // console.log(todosData)
     return (
       <div className='todo-list'>
         <div className='container'>
           <Header/>
-            <NewTodoItem/>
+            <NewTodoItem newTodoItem={this.newTodoItem}/>
               <Todos
                 todos={this.state.todos}
                 toogleComplete={this.toogleComplete}
