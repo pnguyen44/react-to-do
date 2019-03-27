@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import todosData from './todosData'
-import Todos from './components/Todos'
+import Todos from './todo/Todos'
 
 
 class App extends Component {
