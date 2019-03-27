@@ -21,7 +21,7 @@ handleChange = (id) => {
   render() {
     // console.log(todosData)
     return (
-      <div className='App'>
+      <div className='todo-list'>
         <Todos todos={this.state.todos} handleChange={this.handleChange}/>
       </div>
     );

@@ -13,3 +13,7 @@ a {
   color: #333;
   text-decoration: none;
 }
+
+.todo-list {
+  margin: 50px 200px;
+}
