@@ -9,7 +9,7 @@ class App extends Component {
     todos: todosData
   }
 
-handleChange = (id) => {
+toogleComplete = (id) => {
   this.setState({ todos: this.state.todos.map(item => {
     if(item.id === id) {
       item.completed = !item.completed
@@ -18,11 +18,20 @@ handleChange = (id) => {
   }) })
 }
 
+removeItem = (id) => {
+  console.log(id)
+  this.setState({todos: [...this.state.todos].filter(item => item.id !== id)})
+}
+
   render() {
     // console.log(todosData)
     return (
       <div className='todo-list'>
-        <Todos todos={this.state.todos} handleChange={this.handleChange}/>
+        <Todos
+          todos={this.state.todos}
+          toogleComplete={this.toogleComplete}
+          removeItem={this.removeItem}
+        />
       </div>
     );
   }

@@ -22,10 +22,13 @@ class TodoItem extends Component {
         <input
           type='checkbox'
           checked={this.props.item.completed}
-          onChange={this.props.handleChange.bind(this,id)}
+          onChange={this.props.toogleComplete.bind(this,id)}
         />{"  "}
           {name}
-          <button style={btnStyle}>X</button>
+          <button
+            style={btnStyle}
+            onClick={this.props.removeItem.bind(this,id)}>
+          X</button>
         </p>
       </div>
     )
