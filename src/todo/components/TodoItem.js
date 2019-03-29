@@ -5,9 +5,9 @@ class TodoItem extends Component {
 
   getStyles = () => {
     return {
-      background: '#f4f4f4',
+      background: '#3f51b530',
       padding: '10px',
-      borderBottom: '1px #ccc dotted',
+      borderBottom: '1px white solid',
       // fontStyle: 'italic',
       // color: 'grey',
       textDecoration: this.props.item.completed ? 'line-through' : 'none'
@@ -41,7 +41,7 @@ TodoItem.propTypes = {
 }
 
 const btnStyle = {
-  background: '#f4f4f4',
+  background: 'rgba(0, 0, 0, 0)',
   color: 'red',
   border: 'none',
   fontSize: 14,
