@@ -36,7 +36,7 @@ toogleComplete = (id) => {
 }
 
 removeItem = (id) => {
-  axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+  axios.delete(`${apiUrl}/items/${id}`)
       .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }));
 }
 
