@@ -14,7 +14,7 @@ class NewTodoItem extends Component {
     e.preventDefault()
     this.props.newTodoItem(this.state.name)
     // clear state
-    this.setState({title: ''})
+    this.setState({name: ''})
   }
   render() {
     return (
