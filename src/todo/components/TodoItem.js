@@ -15,19 +15,20 @@ class TodoItem extends Component {
   }
 
   render() {
-    const {id, name} = this.props.item
+    const {_id, name} = this.props.item
+    // console.log('from dooo', _id)
     return (
       <div style={this.getStyles()}>
         <p>
         <input
           type='checkbox'
           checked={this.props.item.completed}
-          onChange={this.props.toogleComplete.bind(this,id)}
+          onChange={this.props.toogleComplete.bind(this,_id)}
         />{"  "}
           {name}
           <button
             style={btnStyle}
-            onClick={this.props.removeItem.bind(this,id)}>
+            onClick={this.props.removeItem.bind(this,_id)}>
           X</button>
         </p>
       </div>
