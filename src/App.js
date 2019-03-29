@@ -25,9 +25,7 @@ componentDidMount() {
 }
 
 toogleComplete = (id,item) => {
-  console.log('iddd', id, item)
   // const item = await this.state.todos.filter(item => item._id === id)
-  // console.log('....', id)
 
   // (async() => await fetch(apiUrl + '/items/' + id, {
   //     method: 'PUT',
@@ -39,11 +37,7 @@ toogleComplete = (id,item) => {
   //       completed: !item.completed
   //     })
   //   }))()
-  //   .then(res => {
-  //     console.log('...dfdsfsdata', res.json())
-  //   })
   //   .then(jsonData => {
-  //     console.log('..json', jsonData)
   //     this.setState({ todos: this.state.todos.map(item => {
   //       if(item.id === jsonData.data.id) {
   //         item.completed = !item.completed
@@ -53,7 +47,6 @@ toogleComplete = (id,item) => {
   //   })
 
 
-// working
   axios({
     url: apiUrl + '/items/' + id,
     method:'patch',
@@ -65,7 +58,6 @@ toogleComplete = (id,item) => {
     }
   })
   .then(res => {
-    console.log('..json', res.data)
     this.setState({ todos: this.state.todos.map(item => {
       if(item.id === res.data.id) {
         item.completed = !item.completed
@@ -98,7 +90,6 @@ removeItem = (id) => {
     }))()
     .then(res => res.json())
     .then(data => {
-      // console.log('=== res', data)
       this.setState({ todos: [...this.state.todos, data] })
     })
 }
@@ -110,7 +101,6 @@ removeItem = (id) => {
  //     completed: false
  //   })
  //   .then(res => {
- //     console.log('res,,,,', res)
  //     this.setState({ todos: [...this.state.todos, res.data] })
  //    })
  // }

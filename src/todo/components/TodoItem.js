@@ -16,7 +16,6 @@ class TodoItem extends Component {
 
   render() {
     const {_id, name} = this.props.item
-    // console.log('from dooo', _id)
     return (
       <div style={this.getStyles()}>
         <p>
