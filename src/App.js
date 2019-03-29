@@ -119,8 +119,8 @@ removeItem = (id) => {
     return (
       <Router>
         <div className='todo-list'>
-          <div className='container'>
             <NavBar/>
+            <div className='container'>
               <Route exact path='/' render={props => (
                 <React.Fragment>
                   <NewTodoItem newTodoItem={this.newTodoItem}/>
