@@ -32,6 +32,7 @@ const NavBar = () => {
     <div style={styles.root}>
       <AppBar position="static">
         <Toolbar>
+        <img src={require('../to-do-icon.png')} style={{width:'58px', marginLeft:'1vw', paddingRight:'14px'}} />
           <Typography variant="h6" color="inherit" style={styles.grow}>
             On Track
           </Typography>
