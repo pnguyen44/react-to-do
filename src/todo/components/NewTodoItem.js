@@ -24,7 +24,7 @@ class NewTodoItem extends Component {
             type='text'
             name='name'
             value={this.state.name}
-            style={{flex: '10', padding: '5px'}}
+            style={{flex: '36', padding: '10px'}}
             placeholder='Add item'
             onChange={this.handleChange}
           />
