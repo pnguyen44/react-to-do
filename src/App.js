@@ -36,8 +36,13 @@ toogleComplete = (id) => {
 }
 
 removeItem = (id) => {
-  axios.delete(`${apiUrl}/items/${id}`)
-      .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }));
+  fetch(apiUrl + '/items/' + id, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+  .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }));
 }
 
 newTodoItem = (name) => {
@@ -64,11 +69,23 @@ newTodoItem = (name) => {
   //     this.setState({todos: [...this.state.todos,res.data]})
   //   })
 
-  axios.post(apiUrl + '/items', {
-    name,
-    completed: false
-  })
-  .then(res => this.setState({ todos: [...this.state.todos, res.data] }));
+  fetch(apiUrl + '/items/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        completed: false
+      })
+    })
+    .then(res => this.setState({ todos: [...this.state.todos, res.data] }));
+
+  // axios.post(apiUrl + '/items', {
+  //   name,
+  //   completed: false
+  // })
+  // .then(res => this.setState({ todos: [...this.state.todos, res.data] }));
 }
 
   render() {
