@@ -31,7 +31,7 @@ class NewTodoItem extends Component {
 
           <input
             type='submit'
-            value='submit'
+            value='Add'
             className='btn'
             style={{flex:'1'}}
           />
