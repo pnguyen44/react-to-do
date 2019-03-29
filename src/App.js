@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
-// import todosData from './todosData'
 import Todos from './todo/Todos'
 import Header from './header/Header'
 import NewTodoItem from './todo/components/NewTodoItem'
@@ -16,7 +15,6 @@ class App extends Component {
   }
 
 componentDidMount() {
-  // fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
   fetch(apiUrl + '/items')
     .then(res => {
       return res.json()
@@ -45,31 +43,8 @@ removeItem = (id) => {
   .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }));
 }
 
-newTodoItem = (name) => {
-  // const todoItem = {
-  //   // id: 10099,
-  //   name: name,
-  //   completed: false,
-  // }
-
-  // console.log(name)
-  // const url = 'https://jsonplaceholder.typicode.com/todos'
-  // return axios(url,todoItem)
-  //     .then(res => this.setState({todos: [...this.state.todos,res.data]}))
-  // const init = {
-  //   method: 'POST',
-  //   // headers: {
-  //   //   'Content-Type': 'application/json',
-  //   // },
-  //   body: JSON.stringify(todoItem)
-  // }
-  // fetch(apiUrl + '/items', init)
-  //   .then(res => {
-  //     console.log('...', res)
-  //     this.setState({todos: [...this.state.todos,res.data]})
-  //   })
-
-  fetch(apiUrl + '/items/', {
+ newTodoItem = (name) => {
+     (async() => await fetch(apiUrl + '/items/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -78,18 +53,27 @@ newTodoItem = (name) => {
         name,
         completed: false
       })
+    }))()
+    .then(res => res.json())
+    .then(data => {
+      console.log('=== res', data)
+      this.setState({ todos: [...this.state.todos, data] })
     })
-    .then(res => this.setState({ todos: [...this.state.todos, res.data] }));
-
-  // axios.post(apiUrl + '/items', {
-  //   name,
-  //   completed: false
-  // })
-  // .then(res => this.setState({ todos: [...this.state.todos, res.data] }));
 }
 
+
+ // newTodoItem = (name) => {
+ //   axios.post(apiUrl + '/items', {
+ //     name,
+ //     completed: false
+ //   })
+ //   .then(res => {
+ //     console.log('res,,,,', res)
+ //     this.setState({ todos: [...this.state.todos, res.data] })
+ //    })
+ // }
+
   render() {
-    // console.log(todosData)
     return (
       <Router>
         <div className='todo-list'>
