@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import Todos from './todo/Todos'
-import Header from './header/Header'
+import NavBar from './navBar/NavBar'
 import NewTodoItem from './todo/components/NewTodoItem'
 import About from './about/About'
 import apiUrl from './apiConfig'
@@ -120,7 +120,7 @@ removeItem = (id) => {
       <Router>
         <div className='todo-list'>
           <div className='container'>
-            <Header/>
+            <NavBar/>
               <Route exact path='/' render={props => (
                 <React.Fragment>
                   <NewTodoItem newTodoItem={this.newTodoItem}/>
