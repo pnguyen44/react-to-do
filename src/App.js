@@ -15,7 +15,7 @@ class App extends Component {
   }
 
 componentDidMount() {
-  fetch(apiUrl + '/items')
+  fetch('https://on-track-api.herokuapp.com' + '/items')
     .then(res => {
       return res.json()
     })
@@ -118,7 +118,6 @@ removeItem = (id) => {
   render() {
     return (
       <Router>
-        <div className='todo-list'>
             <NavBar/>
             <div className='container'>
               <Route exact path='/' render={props => (
@@ -133,7 +132,6 @@ removeItem = (id) => {
               )}/>
               <Route path='/about' component={About}/>
           </div>
-        </div>
       </Router>
     );
   }
