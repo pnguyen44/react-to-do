@@ -117,7 +117,7 @@ removeItem = (id) => {
 
   render() {
     return (
-      <Router>
+      <Router baseName='/on-track'>
             <NavBar/>
             <div className='container'>
               <Route exact path='/' render={props => (
