@@ -22,7 +22,7 @@ const styles = {
   },
   link: {
     float: 'right',
-    marginLeft: 27,
+    marginRight: 30,
     color: 'white'
   }
 };
@@ -37,8 +37,8 @@ const NavBar = () => {
             On Track
           </Typography>
 
-          <Link style={styles.link} to='/'>Home</Link>
-          <Link style={styles.link} to='/about'>About</Link>
+          <Link className='material-icons' style={styles.link} to='/'>home</Link>
+          <Link className='material-icons' style={styles.link} to='/about'>info</Link>
         </Toolbar>
       </AppBar>
     </div>
