@@ -15,7 +15,7 @@ class App extends Component {
   }
 
 componentDidMount() {
-  fetch('https://on-track-api.herokuapp.com' + '/items')
+  fetch(apiUrl + '/items')
     .then(res => {
       return res.json()
     })
@@ -46,7 +46,6 @@ toogleComplete = (id,item) => {
   //     }) })
   //   })
 
-
   axios({
     url: apiUrl + '/items/' + id,
     method:'patch',
@@ -57,13 +56,13 @@ toogleComplete = (id,item) => {
       completed: !item.completed
     }
   })
-  .then(res => {
-    this.setState({ todos: this.state.todos.map(item => {
-      if(item.id === res.data.id) {
-        item.completed = !item.completed
+  .then((res)=> {
+    this.setState({ todos: this.state.todos.map(todo => {
+      if(todo._id === id) {
+        todo.completed = res.data.completed
       }
-      return item
-    }) })
+      return todo;
+    }) });
   })
 }
 
