@@ -25,6 +25,13 @@ class TodoItem extends Component {
           onChange={this.props.toogleComplete.bind(this,_id,this.props.item)}
         />{"  "}
           {name}
+
+          <button style={btnStyle} className="material-icons">
+            delete
+          </button>
+          <button style={btnStyle} className="material-icons">
+            edit
+          </button>
           <button
             style={btnStyle}
             onClick={this.props.removeItem.bind(this,_id)}>
@@ -41,9 +48,9 @@ TodoItem.propTypes = {
 
 const btnStyle = {
   background: 'rgba(0, 0, 0, 0)',
-  color: 'red',
+  // color: 'lightred',
   border: 'none',
-  fontSize: 14,
+  fontSize: 25,
   padding: '5px 10px',
   float: 'right',
   cursor: 'pointer',
