@@ -77,6 +77,7 @@ removeItem = (id) => {
 }
 
  newTodoItem = (name) => {
+   if (name) {
      (async() => await fetch(apiUrl + '/items/', {
       method: 'POST',
       headers: {
@@ -91,6 +92,7 @@ removeItem = (id) => {
     .then(data => {
       this.setState({ todos: [...this.state.todos, data] })
     })
+   }
 }
 
 
