@@ -19,23 +19,18 @@ class TodoItem extends Component {
     return (
       <div style={this.getStyles()}>
         <p>
+        <button
+        style={btnStyle}
+        className="material-icons"
+        onClick={this.props.removeItem.bind(this,_id)}>
+          delete
+        </button>
         <input
           type='checkbox'
           checked={this.props.item.completed}
           onChange={this.props.toogleComplete.bind(this,_id,this.props.item)}
         />{"  "}
           {name}
-
-          <button style={btnStyle} className="material-icons">
-            delete
-          </button>
-          <button style={btnStyle} className="material-icons">
-            edit
-          </button>
-          <button
-            style={btnStyle}
-            onClick={this.props.removeItem.bind(this,_id)}>
-          X</button>
         </p>
       </div>
     )
@@ -51,10 +46,11 @@ const btnStyle = {
   // color: 'lightred',
   border: 'none',
   fontSize: 25,
-  padding: '5px 10px',
+  padding: '0px 1px',
   float: 'right',
   cursor: 'pointer',
-  fontWeight: 900
+  fontWeight: 900,
+  justifyContent:'flex-end'
 }
 
 export default TodoItem
