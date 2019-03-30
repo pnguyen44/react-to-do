@@ -32,8 +32,8 @@ class NewTodoItem extends Component {
 
           <input
             type='submit'
-            value='Add'
-            className='btn'
+            value='add_circle'
+            className='btn material-icons'
             style={{flex:'1'}}
           />
         </form>
