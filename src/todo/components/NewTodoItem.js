@@ -23,6 +23,7 @@ class NewTodoItem extends Component {
           <input
             type='text'
             name='name'
+            required
             value={this.state.name}
             style={{flex: '36', padding: '10px'}}
             placeholder='Add item'
