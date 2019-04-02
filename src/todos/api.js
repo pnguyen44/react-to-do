@@ -13,10 +13,19 @@ export const updateCompleted = (id,item) => {
   })
 }
 
-export const getTodos= () => {
+export const getTodos = () => {
   return fetch(apiUrl + '/items', {
     headers: {
       'Content-Type': 'application/json',
     }
   })
+}
+
+export const deleteTodo  = (id) => {
+  return  fetch(apiUrl + '/items/' + id, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          })
 }
