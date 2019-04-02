@@ -65,7 +65,9 @@ class App extends Component {
               <Route exact path='/' render={props => (
                 <React.Fragment>
                   <NewTodoItem onCreateTodo={this.onCreateTodo}/>
+                  <div className='todo-list'>
                   {todosComponent}
+                  </div>
                 </React.Fragment>
               )}/>
               <Route path='/about' component={About}/>

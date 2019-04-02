@@ -30,3 +30,7 @@ a {
 .btn:hover {
   background: #666;
 }
+.todo-list {
+  overflow: scroll;
+  height: 600px;
+}
