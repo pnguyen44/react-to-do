@@ -56,12 +56,12 @@ class App extends Component {
      }
   }
 
-  onEditTodo = (id,newName) => {
+  onRenameTodo = (id,newName) => {
     renameTodo(id, newName)
   }
 
   render() {
-    const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} onUpdateCompleted={this.onUpdateCompleted} onDeleteTodo={this.onDeleteTodo} onEditTodo={this.onEditTodo}/>)
+    const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} onUpdateCompleted={this.onUpdateCompleted} onDeleteTodo={this.onDeleteTodo} onRenameTodo={this.onRenameTodo}/>)
     return (
       <Router basename='/on-track'>
             <NavBar/>

@@ -29,7 +29,7 @@ class TodoItem extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.toogleEditable()
-    this.props.onEditTodo(this.state.id, this.state.name)
+    this.props.onRenameTodo(this.state.id, this.state.name)
   }
 
 
