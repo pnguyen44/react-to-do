@@ -5,7 +5,7 @@ import TodoItem from './todos/components/TodoItem'
 import NavBar from './navBar/NavBar'
 import NewTodoItem from './todos/components/NewTodoItem'
 import About from './about/About'
-import {updateCompleted, getTodos, deleteTodo, createTodo} from './todos/api'
+import {updateCompleted, getTodos, deleteTodo, createTodo, renameTodo} from './todos/api'
 
 
 class App extends Component {
@@ -13,7 +13,7 @@ class App extends Component {
   state = {
     todos: []
   }
-  
+
   onGetTodos() {
      getTodos()
      .then(res => {
@@ -57,8 +57,10 @@ class App extends Component {
      }
   }
 
-  onEditTodo = (id) => {
+  onEditTodo = (id,newName) => {
     console.log('...clicked edit on id', id)
+    console.log('..newName')
+    renameTodo(id, newName)
   }
 
   render() {
