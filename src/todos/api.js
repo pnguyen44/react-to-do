@@ -13,7 +13,7 @@ export const updateCompleted = (id,item) => {
   })
 }
 
-export const getItems= () => {
+export const getTodos= () => {
   return fetch(apiUrl + '/items', {
     headers: {
       'Content-Type': 'application/json',

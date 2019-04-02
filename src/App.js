@@ -7,7 +7,7 @@ import NewTodoItem from './todos/components/NewTodoItem'
 import About from './about/About'
 import apiUrl from './apiConfig'
 // import axios from 'axios'
-import {updateCompleted, getItems} from './todos/api'
+import {updateCompleted, getTodos} from './todos/api'
 
 
 class App extends Component {
@@ -15,8 +15,8 @@ class App extends Component {
     todos: []
   }
 
-  onGetItems() {
-     getItems()
+  onGetTodos() {
+     getTodos()
      .then(res => {
        return res.json()
      })
@@ -26,7 +26,7 @@ class App extends Component {
   }
 
 componentDidMount() {
-  this.onGetItems()
+  this.onGetTodos()
 }
 
 toogleComplete = (id,item) => {
