@@ -29,7 +29,7 @@ componentDidMount() {
   this.onGetTodos()
 }
 
-toogleComplete = (id,item) => {
+onUpdateCompleted= (id,item) => {
   updateCompleted(id,item)
   .then(response => response.json())
   .then(res=> {
@@ -80,7 +80,7 @@ onDeleteTodo = (id) => {
 
   render() {
 
-    const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} toogleComplete={this.toogleComplete} onDeleteTodo={this.onDeleteTodo}/>)
+    const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} onUpdateCompleted={this.onUpdateCompleted} onDeleteTodo={this.onDeleteTodo}/>)
 
     return (
       <Router basename='/on-track'>

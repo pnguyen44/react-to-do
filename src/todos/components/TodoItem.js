@@ -28,7 +28,7 @@ class TodoItem extends Component {
         <input
           type='checkbox'
           checked={this.props.item.completed}
-          onChange={this.props.toogleComplete.bind(this,_id,this.props.item)}
+          onChange={this.props.onUpdateCompleted.bind(this,_id,this.props.item)}
         />{"  "}
           {name}
         </p>
