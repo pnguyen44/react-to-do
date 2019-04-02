@@ -6,7 +6,7 @@ class TodoItem extends Component {
   constructor(props) {
   super(props);
     this.state = {
-      editable: true,
+      disableEditable: true,
       hideUpdateBtn: true,
       name: props.item.name,
       id: null
@@ -24,11 +24,10 @@ class TodoItem extends Component {
   }
 
   toogleEditable = () => {
-    this.setState({editable: !this.state.editable})
+    this.setState({disableEditable: !this.state.disableEditable})
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    this.toogleEditable()
     this.props.onRenameTodo(this.state.id, this.state.name)
   }
 
@@ -48,6 +47,7 @@ class TodoItem extends Component {
     const _id = this.props.item._id
     return (
       <div style={this.getStyles()}>
+      <form onSubmit={this.handleSubmit}>
         <button
         style={btnStyle}
         className="material-icons"
@@ -55,21 +55,12 @@ class TodoItem extends Component {
           delete
         </button>
 
-        {this.state.editable ?
-          <button
-          style={btnStyle}
-          className="material-icons editable"
-          onClick={this.handleClick.bind(this,_id)}> edit
-          </button>
-        :
-          <form onSubmit={this.handleSubmit}>
-            <button
-            type='submit'
-            style={btnStyle}
-            className="material-icons editable"> done
+        <button
+        style={btnStyle}
+        className="material-icons"
+        onClick={this.handleClick.bind(this,_id)}>
+        {this.state.disableEditable ? 'edit' : 'done'}
             </button>
-            </form>
-        }
 
         <input
           type='checkbox'
@@ -78,11 +69,12 @@ class TodoItem extends Component {
         />{"    "}
         <ContentEditable
             html={this.state.name} // innerHTML of the editable div
-            disabled={this.state.editable} // use true to disable edition
+            disabled={this.state.disableEditable} // use true to disable edition
             onChange={this.handleChange} // handle innerHTML change
             tagName='span'
-            style={this.state.editable ? null : styles.editable }
+            style={this.state.disableEditable ? null : styles.editable }
         />
+          </form>
       </div>
     )
   }
