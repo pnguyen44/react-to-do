@@ -22,7 +22,7 @@ class TodoItem extends Component {
         <button
         style={btnStyle}
         className="material-icons"
-        onClick={this.props.removeItem.bind(this,_id)}>
+        onClick={this.props.onDeleteTodo.bind(this,_id)}>
           delete
         </button>
         <input

@@ -7,7 +7,7 @@ import NewTodoItem from './todos/components/NewTodoItem'
 import About from './about/About'
 import apiUrl from './apiConfig'
 // import axios from 'axios'
-import {updateCompleted, getTodos} from './todos/api'
+import {updateCompleted, getTodos, deleteTodo} from './todos/api'
 
 
 class App extends Component {
@@ -43,13 +43,8 @@ toogleComplete = (id,item) => {
   })
 }
 
-removeItem = (id) => {
-  fetch(apiUrl + '/items/' + id, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    })
+onDeleteTodo = (id) => {
+  deleteTodo(id)
   .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }));
 }
 
@@ -85,7 +80,7 @@ removeItem = (id) => {
 
   render() {
 
-    const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} toogleComplete={this.toogleComplete} removeItem={this.removeItem}/>)
+    const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} toogleComplete={this.toogleComplete} onDeleteTodo={this.onDeleteTodo}/>)
 
     return (
       <Router basename='/on-track'>
