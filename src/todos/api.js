@@ -12,3 +12,11 @@ export const updateCompleted = (id,item) => {
     })
   })
 }
+
+export const getItems= () => {
+  return fetch(apiUrl + '/items', {
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+}
