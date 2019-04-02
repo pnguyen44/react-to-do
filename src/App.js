@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
-import TodoItem from './todo/components/TodoItem'
+import TodoItem from './todos/components/TodoItem'
 import NavBar from './navBar/NavBar'
 import NewTodoItem from './todo/components/NewTodoItem'
 import About from './about/About'
