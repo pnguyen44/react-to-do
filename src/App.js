@@ -6,7 +6,7 @@ import NavBar from './navBar/NavBar'
 import NewTodoItem from './todos/components/NewTodoItem'
 import About from './about/About'
 import apiUrl from './apiConfig'
-import {updateCompleted, getTodos, deleteTodo} from './todos/api'
+import {updateCompleted, getTodos, deleteTodo, createTodo} from './todos/api'
 
 
 class App extends Component {
@@ -47,18 +47,9 @@ onDeleteTodo = (id) => {
   .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }));
 }
 
- newTodoItem = (name) => {
+ onCreateTodo = (name) => {
    if (name) {
-     (async() => await fetch(apiUrl + '/items/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name,
-        completed: false
-      })
-    }))()
+     createTodo(name)
     .then(res => res.json())
     .then(data => {
       this.setState({ todos: [...this.state.todos, data] })
@@ -76,7 +67,7 @@ onDeleteTodo = (id) => {
             <div className='container'>
               <Route exact path='/' render={props => (
                 <React.Fragment>
-                  <NewTodoItem newTodoItem={this.newTodoItem}/>
+                  <NewTodoItem onCreateTodo={this.onCreateTodo}/>
                   {todosComponent}
                 </React.Fragment>
               )}/>

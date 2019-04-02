@@ -12,7 +12,7 @@ class NewTodoItem extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.newTodoItem(this.state.name)
+    this.props.onCreateTodo(this.state.name)
     // clear state
     this.setState({name: ''})
   }
