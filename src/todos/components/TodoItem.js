@@ -1,7 +1,29 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
+import ContentEditable from "react-contenteditable";
 
 class TodoItem extends Component {
+  constructor(props) {
+  super(props);
+    this.state = {
+      html: this.props.item.name,
+      editable: true
+    };
+  }
+
+  handleClick = (id) => {
+    console.log('..working')
+    this.props.onEditTodo.bind(this,id, this.html)
+    this.toogleEditable()
+  }
+
+  handleChange = (e) => {
+    this.setState({html: e.target.value})
+  }
+
+  toogleEditable = () => {
+    this.setState({editable: !this.state.editable})
+  }
 
   getStyles = () => {
     return {
@@ -15,7 +37,7 @@ class TodoItem extends Component {
   }
 
   render() {
-    const {_id, name} = this.props.item
+    const {_id} = this.props.item
     return (
       <div style={this.getStyles()}>
         <button
@@ -27,18 +49,23 @@ class TodoItem extends Component {
 
         <button
         style={btnStyle}
-        className="material-icons"
-        onClick={this.props.onEditTodo.bind(this,_id)}>
-
-          edit
+        className="material-icons editable"
+        onClick={this.handleClick.bind(this,_id)}>
+          {this.state.editable ? 'edit' : 'done'}
         </button>
 
         <input
           type='checkbox'
           checked={this.props.item.completed}
           onChange={this.props.onUpdateCompleted.bind(this,_id,this.props.item)}
-        />{"  "}
-          {name}
+        />{"    "}
+        <ContentEditable
+          html={this.state.html} // innerHTML of the editable div
+          disabled={this.state.editable} // use true to disable edition
+          onChange={this.handleChange} // handle innerHTML change
+          tagName='span'
+          style={this.state.editable ? null : styles.editable }
+        />
       </div>
     )
   }
@@ -46,6 +73,12 @@ class TodoItem extends Component {
 
 TodoItem.propTypes = {
   item: PropTypes.object.isRequired,
+}
+
+const styles = {
+  editable: {
+    backgroundColor: 'lightyellow'
+  }
 }
 
 const btnStyle = {
