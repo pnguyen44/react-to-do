@@ -6,24 +6,34 @@ class TodoItem extends Component {
   constructor(props) {
   super(props);
     this.state = {
-      html: this.props.item.name,
-      editable: true
+      editable: true,
+      hideUpdateBtn: true,
+      name: this.props.item.name,
+      id: null
     };
   }
 
+
   handleClick = (id) => {
-    console.log('..working')
-    this.props.onEditTodo.bind(this,id, this.html)
+    console.log('..this.d', id)
+    this.setState({id: id})
     this.toogleEditable()
   }
 
   handleChange = (e) => {
-    this.setState({html: e.target.value})
+    this.setState({name: e.target.value})
   }
 
   toogleEditable = () => {
     this.setState({editable: !this.state.editable})
   }
+  handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('...id', this.state.id)
+    this.toogleEditable()
+    this.props.onEditTodo(this.state.id, this.state.name)
+  }
+
 
   getStyles = () => {
     return {
@@ -37,7 +47,7 @@ class TodoItem extends Component {
   }
 
   render() {
-    const {_id} = this.props.item
+    const _id = this.props.item._id
     return (
       <div style={this.getStyles()}>
         <button
@@ -47,12 +57,21 @@ class TodoItem extends Component {
           delete
         </button>
 
-        <button
-        style={btnStyle}
-        className="material-icons editable"
-        onClick={this.handleClick.bind(this,_id)}>
-          {this.state.editable ? 'edit' : 'done'}
-        </button>
+        {this.state.editable ?
+          <button
+          style={btnStyle}
+          className="material-icons editable"
+          onClick={this.handleClick.bind(this,_id)}> edit
+          </button>
+        :
+          <form onSubmit={this.handleSubmit}>
+            <button
+            type='submit'
+            style={btnStyle}
+            className="material-icons editable"> done
+            </button>
+            </form>
+        }
 
         <input
           type='checkbox'
@@ -60,11 +79,11 @@ class TodoItem extends Component {
           onChange={this.props.onUpdateCompleted.bind(this,_id,this.props.item)}
         />{"    "}
         <ContentEditable
-          html={this.state.html} // innerHTML of the editable div
-          disabled={this.state.editable} // use true to disable edition
-          onChange={this.handleChange} // handle innerHTML change
-          tagName='span'
-          style={this.state.editable ? null : styles.editable }
+            html={this.state.name} // innerHTML of the editable div
+            disabled={this.state.editable} // use true to disable edition
+            onChange={this.handleChange} // handle innerHTML change
+            tagName='span'
+            style={this.state.editable ? null : styles.editable }
         />
       </div>
     )
