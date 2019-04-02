@@ -5,7 +5,6 @@ import TodoItem from './todos/components/TodoItem'
 import NavBar from './navBar/NavBar'
 import NewTodoItem from './todos/components/NewTodoItem'
 import About from './about/About'
-import apiUrl from './apiConfig'
 import {updateCompleted, getTodos, deleteTodo, createTodo} from './todos/api'
 
 
@@ -24,43 +23,41 @@ class App extends Component {
      })
   }
 
-componentDidMount() {
-  this.onGetTodos()
-}
+  componentDidMount() {
+    this.onGetTodos()
+  }
 
-onUpdateCompleted= (id,item) => {
-  updateCompleted(id,item)
-  .then(response => response.json())
-  .then(res=> {
-    console.log('Success:', res)
-    this.setState({ todos: this.state.todos.map(todo => {
-      if(todo._id === id) {
-        todo.completed = res.completed
-      }
-      return todo;
-    }) });
-  })
-}
-
-onDeleteTodo = (id) => {
-  deleteTodo(id)
-  .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }));
-}
-
- onCreateTodo = (name) => {
-   if (name) {
-     createTodo(name)
-    .then(res => res.json())
-    .then(data => {
-      this.setState({ todos: [...this.state.todos, data] })
+  onUpdateCompleted = (id,item) => {
+    updateCompleted(id,item)
+    .then(response => response.json())
+    .then(res=> {
+      console.log('Success:', res)
+      this.setState({ todos: this.state.todos.map(todo => {
+        if(todo._id === id) {
+          todo.completed = res.completed
+        }
+        return todo;
+      }) });
     })
-   }
-}
+  }
+
+  onDeleteTodo = (id) => {
+    deleteTodo(id)
+    .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }));
+  }
+
+   onCreateTodo = (name) => {
+     if (name) {
+       createTodo(name)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ todos: [...this.state.todos, data] })
+      })
+     }
+  }
 
   render() {
-
     const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} onUpdateCompleted={this.onUpdateCompleted} onDeleteTodo={this.onDeleteTodo}/>)
-
     return (
       <Router basename='/on-track'>
             <NavBar/>
