@@ -6,7 +6,6 @@ import NavBar from './navBar/NavBar'
 import NewTodoItem from './todos/components/NewTodoItem'
 import About from './about/About'
 import apiUrl from './apiConfig'
-// import axios from 'axios'
 import {updateCompleted, getTodos, deleteTodo} from './todos/api'
 
 
@@ -66,17 +65,6 @@ onDeleteTodo = (id) => {
     })
    }
 }
-
-
- // newTodoItem = (name) => {
- //   axios.post(apiUrl + '/items', {
- //     name,
- //     completed: false
- //   })
- //   .then(res => {
- //     this.setState({ todos: [...this.state.todos, res.data] })
- //    })
- // }
 
   render() {
 
