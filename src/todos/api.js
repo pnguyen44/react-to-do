@@ -30,7 +30,7 @@ export const deleteTodo  = (id) => {
           })
 }
 
-export const   = name => {
+export const createTodo = name => {
   return fetch(apiUrl + '/items/', {
     method: 'POST',
     headers: {
