@@ -34,3 +34,6 @@ a {
   overflow: scroll;
   height: 600px;
 }
+.todo-list :hover {
+  background-color: #d5d8e5c4;
+}
