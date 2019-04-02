@@ -18,20 +18,23 @@ class TodoItem extends Component {
     const {_id, name} = this.props.item
     return (
       <div style={this.getStyles()}>
-        <p>
         <button
         style={btnStyle}
         className="material-icons"
         onClick={this.props.onDeleteTodo.bind(this,_id)}>
           delete
         </button>
+
+        <button style={btnStyle} className="material-icons">
+          edit
+        </button>
+        
         <input
           type='checkbox'
           checked={this.props.item.completed}
           onChange={this.props.onUpdateCompleted.bind(this,_id,this.props.item)}
         />{"  "}
           {name}
-        </p>
       </div>
     )
   }
