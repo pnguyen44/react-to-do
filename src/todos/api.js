@@ -29,3 +29,16 @@ export const deleteTodo  = (id) => {
             }
           })
 }
+
+export const   = name => {
+  return fetch(apiUrl + '/items/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name,
+      completed: false
+    })
+  })
+}
