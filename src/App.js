@@ -3,10 +3,11 @@ import {BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import TodoItem from './todos/components/TodoItem'
 import NavBar from './navBar/NavBar'
-import NewTodoItem from './todo/components/NewTodoItem'
+import NewTodoItem from './todos/components/NewTodoItem'
 import About from './about/About'
 import apiUrl from './apiConfig'
-import axios from 'axios'
+// import axios from 'axios'
+import {updateCompleted, getItems} from './todos/api'
 
 
 class App extends Component {
@@ -14,52 +15,28 @@ class App extends Component {
     todos: []
   }
 
+  onGetItems() {
+     getItems()
+     .then(res => {
+       return res.json()
+     })
+     .then(data => {
+       this.setState({todos: data})
+     })
+  }
+
 componentDidMount() {
-  fetch(apiUrl + '/items')
-    .then(res => {
-      return res.json()
-    })
-    .then(data => {
-      this.setState({todos: data})
-    })
+  this.onGetItems()
 }
 
 toogleComplete = (id,item) => {
-  // const item = await this.state.todos.filter(item => item._id === id)
-
-  // (async() => await fetch(apiUrl + '/items/' + id, {
-  //     method: 'PUT',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       name: item.name,
-  //       completed: !item.completed
-  //     })
-  //   }))()
-  //   .then(jsonData => {
-  //     this.setState({ todos: this.state.todos.map(item => {
-  //       if(item.id === jsonData.data.id) {
-  //         item.completed = !item.completed
-  //       }
-  //       return item
-  //     }) })
-  //   })
-
-  axios({
-    url: apiUrl + '/items/' + id,
-    method:'patch',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    data: {
-      completed: !item.completed
-    }
-  })
-  .then((res)=> {
+  updateCompleted(id,item)
+  .then(response => response.json())
+  .then(res=> {
+    console.log('Success:', res)
     this.setState({ todos: this.state.todos.map(todo => {
       if(todo._id === id) {
-        todo.completed = res.data.completed
+        todo.completed = res.completed
       }
       return todo;
     }) });
