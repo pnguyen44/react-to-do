@@ -42,3 +42,15 @@ export const createTodo = name => {
     })
   })
 }
+
+export const renameTodo = (id, newName) => {
+  return fetch(apiUrl + '/items/' + id, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: newName
+    })
+  })
+}
