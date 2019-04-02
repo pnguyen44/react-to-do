@@ -8,7 +8,7 @@ class TodoItem extends Component {
     this.state = {
       editable: true,
       hideUpdateBtn: true,
-      name: this.props.item.name,
+      name: props.item.name,
       id: null
     };
   }
