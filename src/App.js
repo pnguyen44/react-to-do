@@ -9,10 +9,11 @@ import {updateCompleted, getTodos, deleteTodo, createTodo} from './todos/api'
 
 
 class App extends Component {
+
   state = {
     todos: []
   }
-
+  
   onGetTodos() {
      getTodos()
      .then(res => {
@@ -56,8 +57,12 @@ class App extends Component {
      }
   }
 
+  onEditTodo = (id) => {
+    console.log('...clicked edit on id', id)
+  }
+
   render() {
-    const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} onUpdateCompleted={this.onUpdateCompleted} onDeleteTodo={this.onDeleteTodo}/>)
+    const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} onUpdateCompleted={this.onUpdateCompleted} onDeleteTodo={this.onDeleteTodo} onEditTodo={this.onEditTodo}/>)
     return (
       <Router basename='/on-track'>
             <NavBar/>

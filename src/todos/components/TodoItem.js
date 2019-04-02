@@ -25,10 +25,14 @@ class TodoItem extends Component {
           delete
         </button>
 
-        <button style={btnStyle} className="material-icons">
+        <button
+        style={btnStyle}
+        className="material-icons"
+        onClick={this.props.onEditTodo.bind(this,_id)}>
+
           edit
         </button>
-        
+
         <input
           type='checkbox'
           checked={this.props.item.completed}
