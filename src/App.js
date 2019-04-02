@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
-import Todos from './todo/Todos'
+import TodoItem from './todo/components/TodoItem'
 import NavBar from './navBar/NavBar'
 import NewTodoItem from './todo/components/NewTodoItem'
 import About from './about/About'
@@ -107,6 +107,9 @@ removeItem = (id) => {
  // }
 
   render() {
+
+    const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} toogleComplete={this.toogleComplete} removeItem={this.removeItem}/>)
+
     return (
       <Router basename='/on-track'>
             <NavBar/>
@@ -114,11 +117,7 @@ removeItem = (id) => {
               <Route exact path='/' render={props => (
                 <React.Fragment>
                   <NewTodoItem newTodoItem={this.newTodoItem}/>
-                    <Todos
-                      todos={this.state.todos}
-                      toogleComplete={this.toogleComplete}
-                      removeItem={this.removeItem}
-                    />
+                  {todosComponent}
                 </React.Fragment>
               )}/>
               <Route path='/about' component={About}/>
