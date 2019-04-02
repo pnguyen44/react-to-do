@@ -32,7 +32,6 @@ class App extends Component {
     updateCompleted(id,item)
     .then(response => response.json())
     .then(res=> {
-      console.log('Success:', res)
       this.setState({ todos: this.state.todos.map(todo => {
         if(todo._id === id) {
           todo.completed = res.completed
@@ -58,8 +57,6 @@ class App extends Component {
   }
 
   onEditTodo = (id,newName) => {
-    console.log('...clicked edit on id', id)
-    console.log('..newName')
     renameTodo(id, newName)
   }
 

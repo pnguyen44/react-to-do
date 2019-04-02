@@ -15,7 +15,6 @@ class TodoItem extends Component {
 
 
   handleClick = (id) => {
-    console.log('..this.d', id)
     this.setState({id: id})
     this.toogleEditable()
   }
@@ -29,7 +28,6 @@ class TodoItem extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log('...id', this.state.id)
     this.toogleEditable()
     this.props.onEditTodo(this.state.id, this.state.name)
   }
