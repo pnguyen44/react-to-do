@@ -16,7 +16,11 @@ class TodoItem extends Component {
 
   handleClick = (id) => {
     this.setState({id: id})
-    this.toogleEditable()
+    const name = this.state.name
+    console.log('...', name)
+    if (name) {
+      this.toogleEditable()
+    }
   }
 
   handleChange = (e) => {
@@ -43,6 +47,8 @@ class TodoItem extends Component {
     }
   }
 
+
+
   render() {
     const _id = this.props.item._id
     return (
@@ -66,13 +72,14 @@ class TodoItem extends Component {
           type='checkbox'
           checked={this.props.item.completed}
           onChange={this.props.onUpdateCompleted.bind(this,_id,this.props.item)}
-        />{"    "}
+        />&nbsp;&nbsp;
         <ContentEditable
             html={this.state.name} // innerHTML of the editable div
             disabled={this.state.disableEditable} // use true to disable edition
             onChange={this.handleChange} // handle innerHTML change
             tagName='span'
-            style={this.state.disableEditable ? null : styles.editable }
+            className='todo-item-name'
+            style={this.state.disableEditable ? styles.notEditable : styles.editable }
         />
           </form>
       </div>
@@ -87,7 +94,7 @@ TodoItem.propTypes = {
 const styles = {
   editable: {
     backgroundColor: 'lightyellow'
-  }
+  },
 }
 
 const btnStyle = {
