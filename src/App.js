@@ -11,7 +11,15 @@ import {updateCompleted, getTodos, deleteTodo, createTodo, renameTodo} from './t
 class App extends Component {
 
   state = {
-    todos: []
+    todos: [],
+    flashMessage: '',
+    flashType: null,
+  }
+
+  flash = (message, type) => {
+    this.setState({flashMessage: message, flashType: type})
+    clearTimeout(this.messageTimeout)
+    this.messageTimeout = setTimeout(() => this.setState({flashMessage: null}),2000)
   }
 
   onGetTodos() {
@@ -57,15 +65,22 @@ class App extends Component {
   }
 
   onRenameTodo = (id,newName) => {
-    renameTodo(id, newName)
+    if(newName) {
+      renameTodo(id, newName)
+    } else {
+      console.log('got hre')
+      return this.flash('Name Required', 'flash-error')
+    }
   }
 
   render() {
+    const {flashMessage, flashType} = this.state
     const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} onUpdateCompleted={this.onUpdateCompleted} onDeleteTodo={this.onDeleteTodo} onRenameTodo={this.onRenameTodo}/>)
     return (
       <Router basename='/on-track'>
             <NavBar/>
             <div className='container'>
+              {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
               <Route exact path='/' render={props => (
                 <React.Fragment>
                   <NewTodoItem onCreateTodo={this.onCreateTodo}/>
