@@ -37,3 +37,22 @@ a {
 .todo-list :hover {
   background-color: #d5d8e5c4;
 }
+
+.flash-error {
+  background-color: red;
+}
+
+.flash-error {
+  border: 1px solid black;
+  position: fixed;
+  text-align: center;
+  width: 50%;
+  height: 17%;
+  padding: 24px;
+  display: block;
+  left: 25%;
+}
+.todo-item-name {
+  min-width: 180px;
+  display: inline-block;
+}
