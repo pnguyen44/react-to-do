@@ -9,7 +9,6 @@ class TodoItem extends Component {
       disableEditable: true,
       hideUpdateBtn: true,
       name: props.item.name,
-      // id: props.item._id
     };
     // this.handleDoneBtnClick = this.handleDoneBtnClick.bind(this)
     this.id = this.props.item._id
@@ -33,11 +32,8 @@ class TodoItem extends Component {
   }
 
   handleDoneBtnClick = () => {
-    // e.preventDefault()
     const {flash} = this.props
     if (this.state.name) {
-      console.log('name ', this.state.name)
-
       this.toogleEditable()
       this.props.onRenameTodo(this.id, this.state.name)
     } else {
