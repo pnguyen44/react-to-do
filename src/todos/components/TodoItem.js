@@ -31,7 +31,6 @@ class TodoItem extends Component {
   }
   handleDoneBtnClick = (id) => {
     // e.preventDefault()
-    console.log('submit click')
     this.props.onRenameTodo(id, this.state.name)
     this.toogleEditable()
   }
