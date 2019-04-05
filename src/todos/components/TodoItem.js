@@ -9,12 +9,13 @@ class TodoItem extends Component {
       disableEditable: true,
       hideUpdateBtn: true,
       name: props.item.name,
-      id: null
+      id: props.item._id
     };
+    this.handleDoneBtnClick = this.handleDoneBtnClick.bind(this)
   }
 
 
-  handleClick = (id) => {
+  handleClick = () => {
     // this.setState({id: id})
     const name = this.state.name
     if (name) {
@@ -29,9 +30,10 @@ class TodoItem extends Component {
   toogleEditable = () => {
     this.setState({disableEditable: !this.state.disableEditable})
   }
-  handleDoneBtnClick = (id) => {
+  handleDoneBtnClick = () => {
     // e.preventDefault()
-    this.props.onRenameTodo(id, this.state.name)
+    console.log('id ', this.props.item._id)
+    this.props.onRenameTodo.bind(this,this.id, this.state.name)
     this.toogleEditable()
   }
 
@@ -78,14 +80,14 @@ class TodoItem extends Component {
           <button
             style={btnStyle}
             className="material-icons"
-            onClick={this.handleClick.bind(this,_id)}>edit
+            onClick={this.handleClick}>edit
           </button>
         :
           <button
           style={btnStyle}
           type='submit'
           className="material-icons"
-          onClick={this.handleDoneBtnClick.bind(this, _id)}>done
+          onClick={this.handleDoneBtnClick}>done
           </button>
         }
       </div>

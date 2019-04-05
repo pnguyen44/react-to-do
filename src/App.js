@@ -9,12 +9,15 @@ import {updateCompleted, getTodos, deleteTodo, createTodo, renameTodo} from './t
 
 
 class App extends Component {
-
-  state = {
-    todos: [],
-    flashMessage: '',
-    flashType: null,
+  constructor () {
+    super()
+    this.state = {
+      todos: [],
+      flashMessage: '',
+      flashType: null,
+    }
   }
+
 
   flash = (message, type) => {
     this.setState({flashMessage: message, flashType: type})
