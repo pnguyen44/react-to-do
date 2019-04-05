@@ -6,7 +6,7 @@ import NavBar from './navBar/NavBar'
 import NewTodoItem from './todos/components/NewTodoItem'
 import About from './about/About'
 import {updateCompleted, getTodos, deleteTodo, createTodo, renameTodo} from './todos/api'
-
+import Todos from './todos/components/Todos'
 
 class App extends Component {
   constructor () {
@@ -16,6 +16,7 @@ class App extends Component {
       flashMessage: '',
       flashType: null,
     }
+    this.onRenameTodo = this.onRenameTodo.bind(this)
   }
 
 
@@ -77,7 +78,7 @@ class App extends Component {
 
   render() {
     const {flashMessage, flashType} = this.state
-    const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} onUpdateCompleted={this.onUpdateCompleted} onDeleteTodo={this.onDeleteTodo} onRenameTodo={this.onRenameTodo}/>)
+    // const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} onUpdateCompleted={this.onUpdateCompleted} onDeleteTodo={this.onDeleteTodo} onRenameTodo={this.onRenameTodo}/>)
     return (
       <Router basename='/on-track'>
             <NavBar/>
@@ -87,7 +88,12 @@ class App extends Component {
                 <React.Fragment>
                   <NewTodoItem onCreateTodo={this.onCreateTodo}/>
                   <div className='todo-list'>
-                  {todosComponent}
+                  <Todos
+                    todos={this.state.todos}
+                    onUpdateCompleted={this.onUpdateCompleted}
+                    onDeleteTodo={this.onDeleteTodo}
+                    onRenameTodo={this.onRenameTodo}
+                  />
                   </div>
                 </React.Fragment>
               )}/>

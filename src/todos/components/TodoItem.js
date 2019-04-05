@@ -9,9 +9,10 @@ class TodoItem extends Component {
       disableEditable: true,
       hideUpdateBtn: true,
       name: props.item.name,
-      id: props.item._id
+      // id: props.item._id
     };
-    this.handleDoneBtnClick = this.handleDoneBtnClick.bind(this)
+    // this.handleDoneBtnClick = this.handleDoneBtnClick.bind(this)
+    this.id = this.props.item._id
   }
 
 
@@ -30,10 +31,11 @@ class TodoItem extends Component {
   toogleEditable = () => {
     this.setState({disableEditable: !this.state.disableEditable})
   }
+
   handleDoneBtnClick = () => {
     // e.preventDefault()
-    console.log('id ', this.props.item._id)
-    this.props.onRenameTodo.bind(this,this.id, this.state.name)
+    // console.log('id ', this.props.onRenameTodo)
+    this.props.onRenameTodo(this.id, this.state.name)
     this.toogleEditable()
   }
 
