@@ -18,10 +18,10 @@ class TodoItem extends Component {
 
   handleClick = () => {
     // this.setState({id: id})
-    const name = this.state.name
-    if (name) {
+    // const name = this.state.name
+    // if (name) {
       this.toogleEditable()
-    }
+    // }
   }
 
   handleChange = (e) => {
@@ -34,9 +34,16 @@ class TodoItem extends Component {
 
   handleDoneBtnClick = () => {
     // e.preventDefault()
-    // console.log('id ', this.props.onRenameTodo)
-    this.props.onRenameTodo(this.id, this.state.name)
-    this.toogleEditable()
+    const {flash} = this.props
+    if (this.state.name) {
+      console.log('name ', this.state.name)
+
+      this.toogleEditable()
+      this.props.onRenameTodo(this.id, this.state.name)
+    } else {
+      return flash('Name Required', 'flash-error')
+    }
+
   }
 
 
