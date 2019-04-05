@@ -68,7 +68,6 @@ class App extends Component {
     if(newName) {
       renameTodo(id, newName)
     } else {
-      console.log('got hre')
       return this.flash('Name Required', 'flash-error')
     }
   }

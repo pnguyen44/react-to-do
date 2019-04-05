@@ -17,7 +17,6 @@ class TodoItem extends Component {
   handleClick = (id) => {
     this.setState({id: id})
     const name = this.state.name
-    console.log('...', name)
     if (name) {
       this.toogleEditable()
     }
