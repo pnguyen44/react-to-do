@@ -21,6 +21,14 @@ export const getTodos = () => {
   })
 }
 
+export const getTodo = (id) => {
+  return fetch(apiUrl + '/items/' + id, {
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+}
+
 export const deleteTodo  = (id) => {
   return  fetch(apiUrl + '/items/' + id, {
             method: 'DELETE',
