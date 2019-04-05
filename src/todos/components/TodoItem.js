@@ -53,7 +53,6 @@ class TodoItem extends Component {
     const _id = this.props.item._id
     return (
       <div style={this.getStyles()}>
-      <form onSubmit={this.handleSubmit}>
         <button
         style={btnStyle}
         className="material-icons"
@@ -61,13 +60,7 @@ class TodoItem extends Component {
           delete
         </button>
 
-        <button
-        style={btnStyle}
-        className="material-icons"
-        onClick={this.handleClick.bind(this,_id)}>
-        {this.state.disableEditable ? 'edit' : 'done'}
-            </button>
-
+      <form onSubmit={this.handleSubmit}>
         <input
           type='checkbox'
           checked={this.props.item.completed}
@@ -81,6 +74,14 @@ class TodoItem extends Component {
             className='todo-item-name'
             style={this.state.disableEditable ? styles.notEditable : styles.editable }
         />
+
+          <button
+          style={btnStyle}
+          className="material-icons"
+          onClick={this.handleClick.bind(this,_id)}>
+          {this.state.disableEditable ? 'edit' : 'done'}
+          </button>
+
           </form>
       </div>
     )
