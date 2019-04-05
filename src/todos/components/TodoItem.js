@@ -15,7 +15,7 @@ class TodoItem extends Component {
 
 
   handleClick = (id) => {
-    this.setState({id: id})
+    // this.setState({id: id})
     const name = this.state.name
     if (name) {
       this.toogleEditable()
@@ -29,9 +29,11 @@ class TodoItem extends Component {
   toogleEditable = () => {
     this.setState({disableEditable: !this.state.disableEditable})
   }
-  handleSubmit = (e) => {
-    e.preventDefault()
-    this.props.onRenameTodo(this.state.id, this.state.name)
+  handleDoneBtnClick = (id) => {
+    // e.preventDefault()
+    console.log('submit click')
+    this.props.onRenameTodo(id, this.state.name)
+    this.toogleEditable()
   }
 
 
@@ -59,7 +61,6 @@ class TodoItem extends Component {
           delete
         </button>
 
-      <form onSubmit={this.handleSubmit}>
         <input
           type='checkbox'
           checked={this.props.item.completed}
@@ -74,14 +75,20 @@ class TodoItem extends Component {
             style={this.state.disableEditable ? styles.notEditable : styles.editable }
         />
 
+        {this.state.disableEditable ?
+          <button
+            style={btnStyle}
+            className="material-icons"
+            onClick={this.handleClick.bind(this,_id)}>edit
+          </button>
+        :
           <button
           style={btnStyle}
+          type='submit'
           className="material-icons"
-          onClick={this.handleClick.bind(this,_id)}>
-          {this.state.disableEditable ? 'edit' : 'done'}
+          onClick={this.handleDoneBtnClick.bind(this, _id)}>done
           </button>
-
-          </form>
+        }
       </div>
     )
   }
