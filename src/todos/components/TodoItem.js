@@ -16,13 +16,13 @@ class TodoItem extends Component {
   }
 
 
-  handleClick = () => {
-    // this.setState({id: id})
-    // const name = this.state.name
-    // if (name) {
-      this.toogleEditable()
-    // }
-  }
+  // handleClick = () => {
+  //   // this.setState({id: id})
+  //   // const name = this.state.name
+  //   // if (name) {
+  //     this.toogleEditable()
+  //   // }
+  // }
 
   handleChange = (e) => {
     this.setState({name: e.target.value})
@@ -89,7 +89,7 @@ class TodoItem extends Component {
           <button
             style={btnStyle}
             className="material-icons"
-            onClick={this.handleClick}>edit
+            onClick={this.toogleEditable}>edit
           </button>
         :
           <button
