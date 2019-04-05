@@ -26,37 +26,37 @@ class App extends Component {
     this.messageTimeout = setTimeout(() => this.setState({flashMessage: null}),2000)
   }
 
-  // onGetTodos() {
-  //    getTodos()
-  //    .then(res => {
-  //      return res.json()
-  //    })
-  //    .then(data => {
-  //      this.setState({todos: data})
-  //    })
-  // }
-  //
-  // componentDidMount() {
-  //   this.onGetTodos()
-  // }
-  //
-  // onUpdateCompleted = (id,item) => {
-  //   updateCompleted(id,item)
-  //   .then(response => response.json())
-  //   .then(res=> {
-  //     this.setState({ todos: this.state.todos.map(todo => {
-  //       if(todo._id === id) {
-  //         todo.completed = res.completed
-  //       }
-  //       return todo;
-  //     }) });
-  //   })
-  // }
-  //
-  // onDeleteTodo = (id) => {
-  //   deleteTodo(id)
-  //   .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }));
-  // }
+  onGetTodos() {
+     getTodos()
+     .then(res => {
+       return res.json()
+     })
+     .then(data => {
+       this.setState({todos: data})
+     })
+  }
+
+  componentDidMount() {
+    this.onGetTodos()
+  }
+
+  onUpdateCompleted = (id,item) => {
+    updateCompleted(id,item)
+    .then(response => response.json())
+    .then(res=> {
+      this.setState({ todos: this.state.todos.map(todo => {
+        if(todo._id === id) {
+          todo.completed = res.completed
+        }
+        return todo;
+      }) });
+    })
+  }
+
+  onDeleteTodo = (id) => {
+    deleteTodo(id)
+    .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }));
+  }
 
    onCreateTodo = (name) => {
      if (name) {
@@ -68,13 +68,13 @@ class App extends Component {
      }
   }
 
-  // onRenameTodo = (id,newName) => {
-  //   if(newName) {
-  //     renameTodo(id, newName)
-  //   } else {
-  //     return this.flash('Name Required', 'flash-error')
-  //   }
-  // }
+  onRenameTodo = (id,newName) => {
+    if(newName) {
+      renameTodo(id, newName)
+    } else {
+      return this.flash('Name Required', 'flash-error')
+    }
+  }
 
   render() {
     const {flashMessage, flashType} = this.state
@@ -90,6 +90,10 @@ class App extends Component {
                   <div className='todo-list'>
                   <Todos
                   flash={this.flash}
+                  todos={this.state.todos}
+                  onUpdateCompleted={this.onUpdateCompleted}
+                  onDeleteTodo={this.onDeleteTodo}
+                  onRenameTodo={this.onRenameTodo}
                   />
                   </div>
                 </React.Fragment>
