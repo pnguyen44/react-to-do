@@ -78,7 +78,6 @@ class App extends Component {
 
   render() {
     const {flashMessage, flashType} = this.state
-    // const todosComponent = this.state.todos.map(item => <TodoItem  key={item._id} item={item} onUpdateCompleted={this.onUpdateCompleted} onDeleteTodo={this.onDeleteTodo} onRenameTodo={this.onRenameTodo}/>)
     return (
       <Router basename='/on-track'>
             <NavBar/>

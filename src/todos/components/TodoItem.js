@@ -8,22 +8,11 @@ class TodoItem extends Component {
   super(props);
     this.state = {
       editable: false ,
-      // hideUpdateBtn: true,
       name: props.item.name,
       todo: {}
     };
-    // this.handleDoneBtnClick = this.handleDoneBtnClick.bind(this)
     this.id = this.props.item._id
   }
-
-
-  // handleClick = () => {
-  //   // this.setState({id: id})
-  //   // const name = this.state.name
-  //   // if (name) {
-  //     this.toggleEditable()
-  //   // }
-  // }
 
   onGetTodo() {
      getTodo(this.id)
@@ -56,8 +45,7 @@ disableNewlines = event => {
 }
 
   handleChange = (e) => {
-    // Handling ContentEditable component issues
-    console.log('...handleChange got here')
+    // Handling ContentEditable component issue with special character
     const trimSpaces = string => {
       return string
         .replace(/&nbsp;/g, '')
@@ -66,18 +54,13 @@ disableNewlines = event => {
         .replace(/&lt;/g, '<')
         .replace(/<br>/g, '')
     }
-      console.log('e.target.value', e.target.value)
     const {value} = e.target
     let modifiedVal
     if(value) {
-      console.log('valin trim ue',value)
        modifiedVal = trimSpaces(value)
-       // modifiedVal = value
     } else {
       modifiedVal = ''
     }
-
-        console.log('modVal', modifiedVal)
     this.setState({name: modifiedVal})
   }
 
@@ -87,13 +70,10 @@ disableNewlines = event => {
 
   handleDoneBtnClick = () => {
     const {flash} = this.props
-    console.log('.state name..', this.state.name)
     if (this.state.name) {
-      // console.log('...toggleEditable in done btn', this.toggleEditable)
       this.toggleEditable()
       this.props.onRenameTodo(this.id, this.state.name)
     } else {
-      // this.toggleEditable()
       return flash('Name Required', 'flash-error')
     }
 
@@ -101,7 +81,6 @@ disableNewlines = event => {
   handleCancelClick = () => {
     const oldName = this.state.todo.name
     this.setState({name:oldName})
-    // console.log('.toggleEditable in cance bytn', this.toggleEditable)
     this.toggleEditable()
   }
 
@@ -119,7 +98,6 @@ disableNewlines = event => {
 
 renderBtns = () => {
   const {editable} = this.state
-  // console.log('editable', editable)
 
   if (!editable) {
     return (
