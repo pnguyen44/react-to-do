@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import ContentEditable from "react-contenteditable";
+import {getTodo} from '../api'
 
 class TodoItem extends Component {
   constructor(props) {
   super(props);
     this.state = {
-      disableEditable: true,
-      hideUpdateBtn: true,
+      editable: false ,
+      // hideUpdateBtn: true,
       name: props.item.name,
+      todo: {}
     };
     // this.handleDoneBtnClick = this.handleDoneBtnClick.bind(this)
     this.id = this.props.item._id
@@ -23,23 +25,58 @@ class TodoItem extends Component {
   //   // }
   // }
 
+  onGetTodo() {
+     getTodo(this.id)
+     .then(res => {
+       return res.json()
+     })
+     .then(data => {
+       this.setState({todo: data})
+     })
+  }
+
+  componentDidMount() {
+    this.onGetTodo()
+  }
+
+  pasteAsPlainText = event => {
+  event.preventDefault()
+
+  const text = event.clipboardData.getData('text/plain')
+  document.execCommand('insertHTML', false, text)
+}
+
   handleChange = (e) => {
+    // remove <br> frm event.target.value
+    // const text = e.clipboardData.getData('text/plain')
+    // const val = e.target.value.split('').slice(0, e.target.value.length - 4).join('')
+    console.log('e.target.value', e.target.value)
+        // console.log('val',val)
     this.setState({name: e.target.value})
   }
 
   toogleEditable = () => {
-    this.setState({disableEditable: !this.state.disableEditable})
+    this.setState({editable: !this.state.editable})
   }
 
   handleDoneBtnClick = () => {
     const {flash} = this.props
+    console.log('...', this.state.name)
     if (this.state.name) {
+      console.log('...got here')
       this.toogleEditable()
       this.props.onRenameTodo(this.id, this.state.name)
     } else {
+      this.toogleEditable()
       return flash('Name Required', 'flash-error')
     }
 
+  }
+  handleCancelClick = () => {
+    // console.log('..id for old', e)
+    const oldName = this.state.todo.name
+    this.setState({name:oldName})
+    this.toogleEditable()
   }
 
 
@@ -54,18 +91,53 @@ class TodoItem extends Component {
     }
   }
 
+renderBtns = () => {
+  const {editable} = this.state
+  console.log('editable', editable)
+
+  if (!editable) {
+    return (
+      <React.Fragment>
+        <button
+        style={btnStyle}
+        className="material-icons"
+        onClick={this.props.onDeleteTodo.bind(this, this.id)}>
+        delete
+        </button>
+
+        <button
+          style={btnStyle}
+          className="material-icons"
+          onClick={this.toogleEditable}>edit
+        </button>
+      </React.Fragment>
+  )
+  } else {
+
+    return (
+      <React.Fragment>
+      <button
+      style={btnStyle}
+      className="material-icons"
+      onClick={this.handleCancelClick}>cancel
+      </button>
+
+      <button
+      style={btnStyle}
+      type='submit'
+      className="material-icons"
+      onClick={this.handleDoneBtnClick}>done
+      </button>
+      </React.Fragment>
+    )
+  }
+}
 
 
   render() {
     const _id = this.props.item._id
     return (
       <div style={this.getStyles()}>
-        <button
-        style={btnStyle}
-        className="material-icons"
-        onClick={this.props.onDeleteTodo.bind(this,_id)}>
-          delete
-        </button>
 
         <input
           type='checkbox'
@@ -74,27 +146,14 @@ class TodoItem extends Component {
         />&nbsp;&nbsp;
         <ContentEditable
             html={this.state.name} // innerHTML of the editable div
-            disabled={this.state.disableEditable} // use true to disable edition
+            disabled={!this.state.editable} // use true to disable edition
             onChange={this.handleChange} // handle innerHTML change
+            onPaste={this.pasteAsPlainText} 
             tagName='span'
             className='todo-item-name'
-            style={this.state.disableEditable ? styles.notEditable : styles.editable }
+            style={this.state.editable ? styles.editable : null }
         />
-
-        {this.state.disableEditable ?
-          <button
-            style={btnStyle}
-            className="material-icons"
-            onClick={this.toogleEditable}>edit
-          </button>
-        :
-          <button
-          style={btnStyle}
-          type='submit'
-          className="material-icons"
-          onClick={this.handleDoneBtnClick}>done
-          </button>
-        }
+        {this.renderBtns()}
       </div>
     )
   }
