@@ -46,13 +46,38 @@ class TodoItem extends Component {
   document.execCommand('insertHTML', false, text)
 }
 
+disableNewlines = event => {
+  const keyCode = event.keyCode || event.which
+
+  if (keyCode === 13) {
+    event.returnValue = false
+    if (event.preventDefault) event.preventDefault()
+  }
+}
+
   handleChange = (e) => {
-    // remove <br> frm event.target.value
-    // const text = e.clipboardData.getData('text/plain')
-    // const val = e.target.value.split('').slice(0, e.target.value.length - 4).join('')
-    console.log('e.target.value', e.target.value)
+    // Handling ContentEditable component issues
+    const trimSpaces = string => {
+      return string
+        .replace(/&nbsp;/g, '')
+        .replace(/&amp;/g, '&')
+        .replace(/&gt;/g, '>')
+        .replace(/&lt;/g, '<')
+        .replace(/<br>/g, '<')
+    }
+      console.log('e.target.value', e.target.value)
+    const {value} = e.target.value
+    let modifiedVal
+    if(value && !typeof(value) === 'undefined') {
+      console.log('value',value)
+       modifiedVal = trimSpaces(value)
+    } else {
+      modifiedVal = ''
+    }
+
+
         // console.log('val',val)
-    this.setState({name: e.target.value})
+    this.setState({name: modifiedVal})
   }
 
   toogleEditable = () => {
@@ -148,7 +173,8 @@ renderBtns = () => {
             html={this.state.name} // innerHTML of the editable div
             disabled={!this.state.editable} // use true to disable edition
             onChange={this.handleChange} // handle innerHTML change
-            onPaste={this.pasteAsPlainText} 
+            onPaste={this.pasteAsPlainText}
+            onKeyPress={this.disableNewlines}
             tagName='span'
             className='todo-item-name'
             style={this.state.editable ? styles.editable : null }
