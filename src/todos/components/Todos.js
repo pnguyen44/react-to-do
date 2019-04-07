@@ -27,12 +27,6 @@ class Todos extends Component {
    this.props.setTodos({todos: this.state.todos})
   }
 
-static getDerivedStateFromProps(props,state){
-   if(props.todos !== state.todos){
-     return { todos: state.todos};
-  }
-  else return null;
-}
 
 componentDidUpdate(prevProps) {
   if (this.props.todos !== prevProps.todos) {
