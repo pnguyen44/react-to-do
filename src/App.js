@@ -17,15 +17,10 @@ class App extends Component {
       flashMessage: '',
       flashType: null,
     }
-    // this.onRenameTodo = this.onRenameTodo.bind(this)
   }
 
   setTodos = todos => {
-    console.log('calling setTodos todos before', this.state.todos)
-
     this.setState(todos)
-    console.log('calling setTodos todos after', this.state.todos)
-
   }
 
   flash = (message, type) => {
@@ -34,60 +29,8 @@ class App extends Component {
     this.messageTimeout = setTimeout(() => this.setState({flashMessage: null}),2000)
   }
 
-  // onGetTodos() {
-  //    getTodos()
-  //    .then(res => {
-  //      return res.json()
-  //    })
-  //    .then(data => {
-  //      this.setState({todos: data})
-  //    })
-  // }
-  //
-  // componentDidMount() {
-  //   this.onGetTodos()
-  // }
-  //
-  // onUpdateCompleted = (id,item) => {
-  //   updateCompleted(id,item)
-  //   .then(response => response.json())
-  //   .then(res=> {
-  //     this.setState({ todos: this.state.todos.map(todo => {
-  //       if(todo._id === id) {
-  //         todo.completed = res.completed
-  //       }
-  //       return todo;
-  //     }) });
-  //   })
-  // }
-  //
-  // onDeleteTodo = (id) => {
-  //   deleteTodo(id)
-  //   .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }));
-  // }
-  //
-  //  onCreateTodo = (name) => {
-  //    if (name) {
-  //      createTodo(name)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({ todos: [...this.state.todos, data] })
-  //     })
-  //    }
-  // }
-  //
-  // onRenameTodo = (id,newName) => {
-  //   if(newName) {
-  //     renameTodo(id, newName)
-  //   } else {
-  //     return this.flash('Name Required', 'flash-error')
-  //   }
-  // }
-
   render() {
     const {flashMessage, flashType, todos} = this.state
-
-    // console.log('apps props', this.props.history)
     return (
       <Router basename='/on-track'>
             <NavBar/>

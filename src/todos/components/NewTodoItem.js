@@ -34,15 +34,12 @@ class NewTodoItem extends Component {
       createTodo(name)
      .then(res => res.json())
      .then(data => {
-       // console.log('...onCreateTodo', this.state.todos)
        this.props.setTodos({ todos: [...this.state.todos, data]})
-       // this.setState({ todos: [...this.state.todos, data] })
      })
     }
  }
 
   render() {
-    console.log('NewTodoItem props', this.props)
     return (
       <div>
         <form style={{display: 'flex'}} onSubmit={this.handleSubmit}>

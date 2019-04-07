@@ -1,7 +1,6 @@
 import React , {Component} from 'react'
-// import {getTodos, updateCompleted, deleteTodo, createTodo, renameTodo} from '../api'
 import TodoItem from './TodoItem'
-import {getTodos, updateCompleted, deleteTodo, renameTodo} from '../api'
+import {getTodos} from '../api'
 
 
 class Todos extends Component {
@@ -35,9 +34,7 @@ componentDidUpdate(prevProps) {
 }
 
   render() {
-    // console.log('todos rendering')
     const {flash, setTodos} = this.props
-    // console.log('todos props', this.props.todos)
     const {todos} = this.state
     const todosComponent = todos.map(item => {
     return <TodoItem

@@ -162,7 +162,6 @@ renderBtns = () => {
 
 
   render() {
-    // console.log('todo props', this.props.todos)
     const _id = this.props.item._id
     return (
       <div style={this.getStyles()}>
