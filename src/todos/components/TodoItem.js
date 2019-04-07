@@ -35,9 +35,7 @@ class TodoItem extends Component {
     })
   }
 
-  async onDeleteTodo(id){
-    const todos = await this.state.todos
-
+   onDeleteTodo(id){
     const updatedTodos = [...this.state.todos.filter(todo => todo._id !== id)]
     // this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)]})
     deleteTodo(id)
