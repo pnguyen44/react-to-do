@@ -15,24 +15,7 @@ class TodoItem extends Component {
     this.id = this.props.item._id
   }
 
-  // onGetTodo() {
-  //    getTodo(this.id)
-  //    .then(res => {
-  //      return res.json()
-  //    })
-  //    .then(data => {
-  //      this.setState({todo: data})
-  //    })
-  // }
-
-  // componentDidMount() {
-  //   this.onGetTodo()
-  // }
-
 static getDerivedStateFromProps(props, state) {
-  // console.log('getDerivedStateFromProps')
-  // console.log('props', props)
-  // console.log('state', state)
   if(props.todos !== state.todos) {
     return{todos: state.todos}
   }
@@ -119,7 +102,7 @@ disableNewlines = event => {
     const {flash} = this.props
     if (this.state.name) {
       this.toggleEditable()
-      this.props.onRenameTodo(this.id, this.state.name)
+      this.onRenameTodo(this.id, this.state.name)
     } else {
       return flash('Name Required', 'flash-error')
     }
