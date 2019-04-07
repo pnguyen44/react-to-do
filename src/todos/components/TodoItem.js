@@ -10,7 +10,7 @@ class TodoItem extends Component {
       editable: false ,
       name: props.item.name,
       todo: props.item,
-      todos: props.todos
+      todos: []
     };
     this.id = this.props.item._id
   }
