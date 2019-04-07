@@ -15,12 +15,6 @@ class TodoItem extends Component {
     this.id = this.props.item._id
   }
 
-static getDerivedStateFromProps(props, state) {
-  if(props.todos !== state.todos) {
-    return{todos: state.todos}
-  }
-  return null
-}
 
   onUpdateCompleted = (id,item) => {
     updateCompleted(id,item)
