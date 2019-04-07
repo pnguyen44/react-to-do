@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import ContentEditable from "react-contenteditable";
-import {getTodo} from '../api'
+import {updateCompleted, deleteTodo, renameTodo} from '../api'
 
 class TodoItem extends Component {
   constructor(props) {
@@ -9,23 +9,70 @@ class TodoItem extends Component {
     this.state = {
       editable: false ,
       name: props.item.name,
-      todo: {}
+      todo: props.item,
+      todos: props.todos
     };
     this.id = this.props.item._id
   }
 
-  onGetTodo() {
-     getTodo(this.id)
-     .then(res => {
-       return res.json()
-     })
-     .then(data => {
-       this.setState({todo: data})
-     })
+  // onGetTodo() {
+  //    getTodo(this.id)
+  //    .then(res => {
+  //      return res.json()
+  //    })
+  //    .then(data => {
+  //      this.setState({todo: data})
+  //    })
+  // }
+
+  // componentDidMount() {
+  //   this.onGetTodo()
+  // }
+
+static getDerivedStateFromProps(props, state) {
+  // console.log('getDerivedStateFromProps')
+  // console.log('props', props)
+  // console.log('state', state)
+  if(props.todos !== state.todos) {
+    return{todos: state.todos}
+  }
+  return null
+}
+
+  onUpdateCompleted = (id,item) => {
+    updateCompleted(id,item)
+    .then(response => response.json())
+    .then(res=> {
+      this.setState({ todos: this.state.todos.map(todo => {
+        if(todo._id === id) {
+          todo.completed = res.completed
+        }
+        return todo;
+      }) });
+    })
   }
 
-  componentDidMount() {
-    this.onGetTodo()
+  async onDeleteTodo(id){
+    const todos = await this.state.todos
+    console.log('onDeleteTodo waiting', todos , id)
+
+    const updatedTodos = [...this.state.todos.filter(todo => todo._id !== id)]
+    // this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)]})
+    deleteTodo(id)
+    // .then(() => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }))
+    .then(() => {
+      // console.log('onDeleteTodo state after', updatedTodos)
+      console.log('..', this.props.todos)
+      this.props.setTodos({todos: updatedTodos});
+    })
+  }
+
+  onRenameTodo = (id,newName) => {
+    if(newName) {
+      renameTodo(id, newName)
+    } else {
+      return this.flash('Name Required', 'flash-error')
+    }
   }
 
   pasteAsPlainText = event => {
@@ -105,7 +152,7 @@ renderBtns = () => {
         <button
         style={btnStyle}
         className="material-icons"
-        onClick={this.props.onDeleteTodo.bind(this, this.id)}>
+        onClick={this.onDeleteTodo.bind(this, this.id)}>
         delete
         </button>
 
@@ -139,6 +186,7 @@ renderBtns = () => {
 
 
   render() {
+    console.log('todo props', this.props.todos)
     const _id = this.props.item._id
     return (
       <div style={this.getStyles()}>
@@ -146,7 +194,7 @@ renderBtns = () => {
         <input
           type='checkbox'
           checked={this.props.item.completed}
-          onChange={this.props.onUpdateCompleted.bind(this,_id,this.props.item)}
+          onChange={this.onUpdateCompleted.bind(this,_id,this.props.item)}
         />&nbsp;&nbsp;
         <ContentEditable
             html={this.state.name} // innerHTML of the editable div
