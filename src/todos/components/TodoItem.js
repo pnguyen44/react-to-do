@@ -37,12 +37,8 @@ class TodoItem extends Component {
 
    onDeleteTodo(id){
     const updatedTodos = [...this.state.todos.filter(todo => todo._id !== id)]
-    // this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)]})
     deleteTodo(id)
-    // .then(() => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }))
     .then(() => {
-      // console.log('onDeleteTodo state after', updatedTodos)
-      // console.log('..', this.props.todos)
       this.props.setTodos({todos: updatedTodos});
     })
   }
