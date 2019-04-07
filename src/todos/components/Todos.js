@@ -37,7 +37,7 @@ componentDidUpdate(prevProps) {
   render() {
     // console.log('todos rendering')
     const {flash, setTodos} = this.props
-    console.log('todos props', this.props.todos)
+    // console.log('todos props', this.props.todos)
     const {todos} = this.state
     const todosComponent = todos.map(item => {
     return <TodoItem

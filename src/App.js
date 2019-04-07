@@ -5,7 +5,7 @@ import './App.css';
 import NavBar from './navBar/NavBar'
 import NewTodoItem from './todos/components/NewTodoItem'
 import About from './about/About'
-import {updateCompleted, getTodos, deleteTodo, createTodo, renameTodo} from './todos/api'
+// import {updateCompleted, getTodos, deleteTodo, createTodo, renameTodo} from './todos/api'
 import Todos from './todos/components/Todos'
 
 
@@ -66,15 +66,15 @@ class App extends Component {
   //   .then(res => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }));
   // }
   //
-   onCreateTodo = (name) => {
-     if (name) {
-       createTodo(name)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ todos: [...this.state.todos, data] })
-      })
-     }
-  }
+  //  onCreateTodo = (name) => {
+  //    if (name) {
+  //      createTodo(name)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({ todos: [...this.state.todos, data] })
+  //     })
+  //    }
+  // }
   //
   // onRenameTodo = (id,newName) => {
   //   if(newName) {
@@ -95,7 +95,7 @@ class App extends Component {
               {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
                 <Route exact path='/' render={props => (
                   <React.Fragment>
-                    <NewTodoItem onCreateTodo={this.onCreateTodo}/>
+                    <NewTodoItem setTodos={this.setTodos} todos={todos}/>
                     <div className='todo-list'>
                     <Todos
                     flash={this.flash}

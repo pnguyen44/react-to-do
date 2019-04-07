@@ -1,8 +1,20 @@
 import React, { Component } from 'react'
+import {createTodo} from '../api'
 
 class NewTodoItem extends Component {
-  state = {
-    name: ''
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: '',
+      todos: []
+    }
+  }
+
+  static getDerivedStateFromProps(props, state){
+     if(props.todos!==state.todos){
+       return { todos: props.todos};
+    }
+    else return null;
   }
 
   handleChange = (e) => {
@@ -12,11 +24,25 @@ class NewTodoItem extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.onCreateTodo(this.state.name)
+    this.onCreateTodo(this.state.name)
     // clear state
     this.setState({name: ''})
   }
+
+  onCreateTodo = (name) => {
+    if (name) {
+      createTodo(name)
+     .then(res => res.json())
+     .then(data => {
+       // console.log('...onCreateTodo', this.state.todos)
+       this.props.setTodos({ todos: [...this.state.todos, data]})
+       // this.setState({ todos: [...this.state.todos, data] })
+     })
+    }
+ }
+
   render() {
+    console.log('NewTodoItem props', this.props)
     return (
       <div>
         <form style={{display: 'flex'}} onSubmit={this.handleSubmit}>

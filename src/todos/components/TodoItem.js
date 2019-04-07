@@ -37,7 +37,6 @@ class TodoItem extends Component {
 
   async onDeleteTodo(id){
     const todos = await this.state.todos
-    console.log('onDeleteTodo waiting', todos , id)
 
     const updatedTodos = [...this.state.todos.filter(todo => todo._id !== id)]
     // this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)]})
@@ -45,7 +44,7 @@ class TodoItem extends Component {
     // .then(() => this.setState({ todos: [...this.state.todos.filter(todo => todo._id !== id)] }))
     .then(() => {
       // console.log('onDeleteTodo state after', updatedTodos)
-      console.log('..', this.props.todos)
+      // console.log('..', this.props.todos)
       this.props.setTodos({todos: updatedTodos});
     })
   }
@@ -169,7 +168,7 @@ renderBtns = () => {
 
 
   render() {
-    console.log('todo props', this.props.todos)
+    // console.log('todo props', this.props.todos)
     const _id = this.props.item._id
     return (
       <div style={this.getStyles()}>
