@@ -107,7 +107,6 @@ class TodoItem extends Component {
     this.toggleEditable()
   }
 
-
   getStyles = () => {
     return {
       background: '#3f51b530',
