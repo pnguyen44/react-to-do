@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route } from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 // import TodoItem from './todos/components/TodoItem'
 import NavBar from './navBar/NavBar'
@@ -79,24 +79,24 @@ class App extends Component {
   render() {
     const {flashMessage, flashType} = this.state
     return (
-      <Router>
+      <Router basename='/on-track'>
             <NavBar/>
             <div className='container'>
               {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-              <Route exact path='/' render={props => (
-                <React.Fragment>
-                  <NewTodoItem onCreateTodo={this.onCreateTodo}/>
-                  <div className='todo-list'>
-                  <Todos
-                  flash={this.flash}
-                  todos={this.state.todos}
-                  onUpdateCompleted={this.onUpdateCompleted}
-                  onDeleteTodo={this.onDeleteTodo}
-                  onRenameTodo={this.onRenameTodo}
-                  />
-                  </div>
-                </React.Fragment>
-              )}/>
+                <Route exact path='/' render={props => (
+                  <React.Fragment>
+                    <NewTodoItem onCreateTodo={this.onCreateTodo}/>
+                    <div className='todo-list'>
+                    <Todos
+                    flash={this.flash}
+                    todos={this.state.todos}
+                    onUpdateCompleted={this.onUpdateCompleted}
+                    onDeleteTodo={this.onDeleteTodo}
+                    onRenameTodo={this.onRenameTodo}
+                    />
+                    </div>
+                  </React.Fragment>
+                )}/>
               <Route path='/about' component={About}/>
           </div>
       </Router>
