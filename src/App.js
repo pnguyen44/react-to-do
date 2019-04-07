@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import {BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 // import TodoItem from './todos/components/TodoItem'
 import NavBar from './navBar/NavBar'
