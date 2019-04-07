@@ -52,20 +52,20 @@ class TodoItem extends Component {
   }
 
   pasteAsPlainText = event => {
-  event.preventDefault()
+    event.preventDefault()
 
-  const text = event.clipboardData.getData('text/plain')
-  document.execCommand('insertHTML', false, text)
-}
-
-disableNewlines = event => {
-  const keyCode = event.keyCode || event.which
-
-  if (keyCode === 13) {
-    event.returnValue = false
-    if (event.preventDefault) event.preventDefault()
+    const text = event.clipboardData.getData('text/plain')
+    document.execCommand('insertHTML', false, text)
   }
-}
+
+  disableNewlines = event => {
+    const keyCode = event.keyCode || event.which
+
+    if (keyCode === 13) {
+      event.returnValue = false
+      if (event.preventDefault) event.preventDefault()
+    }
+  }
 
   handleChange = (e) => {
     // Handling ContentEditable component issue with special character
@@ -161,25 +161,24 @@ renderBtns = () => {
 }
 
 
-  render() {
-    const _id = this.props.item._id
+render() {
+  const _id = this.props.item._id
     return (
       <div style={this.getStyles()}>
-
         <input
           type='checkbox'
           checked={this.props.item.completed}
           onChange={this.onUpdateCompleted.bind(this,_id,this.props.item)}
         />&nbsp;&nbsp;
         <ContentEditable
-            html={this.state.name} // innerHTML of the editable div
-            disabled={!this.state.editable} // use true to disable edition
-            onChange={this.handleChange} // handle innerHTML change
-            onPaste={this.pasteAsPlainText}
-            onKeyPress={this.disableNewlines}
-            tagName='span'
-            className='todo-item-name'
-            style={this.state.editable ? styles.editable : null }
+          html={this.state.name} // innerHTML of the editable div
+          disabled={!this.state.editable} // use true to disable edition
+          onChange={this.handleChange} // handle innerHTML change
+          onPaste={this.pasteAsPlainText}
+          onKeyPress={this.disableNewlines}
+          tagName='span'
+          className='todo-item-name'
+          style={this.state.editable ? styles.editable : null }
         />
         {this.renderBtns()}
       </div>
