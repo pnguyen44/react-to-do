@@ -80,11 +80,10 @@ class App extends Component {
     const {flashMessage, flashType} = this.state
     return (
       <Router>
-        <React.Fragment>
             <NavBar/>
             <div className='container'>
               {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-              <Route exact path='/items' render={props => (
+              <Route exact path='/' render={props => (
                 <React.Fragment>
                   <NewTodoItem onCreateTodo={this.onCreateTodo}/>
                   <div className='todo-list'>
@@ -100,7 +99,6 @@ class App extends Component {
               )}/>
               <Route path='/about' component={About}/>
           </div>
-        </React.Fragment>
       </Router>
     );
   }
