@@ -107,63 +107,38 @@ class TodoItem extends Component {
     this.toggleEditable()
   }
 
-  getStyles = () => {
-    return {
-      background: '#3f51b530',
-      padding: '10px',
-      borderBottom: '1px white solid',
-      // fontStyle: 'italic',
-      // color: 'grey',
-      textDecoration: this.props.item.completed ? 'line-through' : 'none'
-    }
-  }
-
-renderBtns = () => {
-  const {editable} = this.state
-
-  if (!editable) {
-    return (
-      <React.Fragment>
-        <button
-        style={btnStyle}
-        className="material-icons"
-        onClick={this.onDeleteTodo.bind(this, this.id)}>
-        delete
-        </button>
-
-        <button
-          style={btnStyle}
-          className="material-icons"
-          onClick={this.toggleEditable}>edit
-        </button>
-      </React.Fragment>
-  )
-  } else {
-
-    return (
-      <React.Fragment>
-      <button
-      style={btnStyle}
-      className="material-icons"
-      onClick={this.handleCancelClick}>cancel
-      </button>
-
-      <button
-      style={btnStyle}
-      type='submit'
-      className="material-icons"
-      onClick={this.handleDoneBtnClick}>done
-      </button>
-      </React.Fragment>
-    )
-  }
-}
-
-
 render() {
+  const todoStyles =  {
+    background: '#3f51b530',
+    padding: '10px',
+    borderBottom: '1px white solid',
+    // fontStyle: 'italic',
+    // color: 'grey',
+    // textDecoration: this.props.item.completed ? 'line-through' : 'none'
+  }
+  
+  const styles = {
+    editable: {
+      backgroundColor: 'lightyellow',
+    },
+  }
+
+  const btnStyle = {
+    background: 'rgba(0, 0, 0, 0)',
+    // color: 'lightred',
+    border: 'none',
+    fontSize: 25,
+    padding: '0px 1px',
+    float: 'right',
+    cursor: 'pointer',
+    fontWeight: 900,
+    justifyContent:'flex-end'
+  }
+
   const _id = this.props.item._id
+  const {editable} = this.state
     return (
-      <div style={this.getStyles()}>
+      <div style={todoStyles}>
         <input
           type='checkbox'
           checked={this.props.item.completed}
@@ -179,7 +154,37 @@ render() {
           className='todo-item-name'
           style={this.state.editable ? styles.editable : null }
         />
-        {this.renderBtns()}
+        { !editable ?
+            <React.Fragment>
+              <button
+              style={btnStyle}
+              className="material-icons"
+              onClick={this.onDeleteTodo.bind(this, this.id)}>
+              delete
+              </button>
+
+              <button
+                style={btnStyle}
+                className="material-icons"
+                onClick={this.toggleEditable}>edit
+              </button>
+            </React.Fragment>
+            :
+            <React.Fragment>
+              <button
+              style={btnStyle}
+              className="material-icons"
+              onClick={this.handleCancelClick}>cancel
+              </button>
+
+              <button
+              style={btnStyle}
+              type='submit'
+              className="material-icons"
+              onClick={this.handleDoneBtnClick}>done
+              </button>
+            </React.Fragment>
+          }
       </div>
     )
   }
@@ -187,24 +192,6 @@ render() {
 
 TodoItem.propTypes = {
   item: PropTypes.object.isRequired,
-}
-
-const styles = {
-  editable: {
-    backgroundColor: 'lightyellow'
-  },
-}
-
-const btnStyle = {
-  background: 'rgba(0, 0, 0, 0)',
-  // color: 'lightred',
-  border: 'none',
-  fontSize: 25,
-  padding: '0px 1px',
-  float: 'right',
-  cursor: 'pointer',
-  fontWeight: 900,
-  justifyContent:'flex-end'
 }
 
 export default TodoItem
