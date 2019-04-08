@@ -130,6 +130,7 @@ class TodoItem extends Component {
       '&:nth-of-type(odd)': {
         backgroundColor:'red',
       },
+
       // }
     }
 
@@ -216,5 +217,6 @@ class TodoItem extends Component {
 TodoItem.propTypes = {
   item: PropTypes.object.isRequired,
 }
+
 
 export default TodoItem
