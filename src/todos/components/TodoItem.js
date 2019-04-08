@@ -122,7 +122,7 @@ class TodoItem extends Component {
     const customTableStyle =  {
       backgroundColor: '#3f51b530',
       // padding: '10px',
-      // borderBottom: '1px black solid',
+      borderBottom: '2px white solid',
       // fontStyle: 'italic',
       // color: 'grey',
       // textDecoration: this.state.todo.completed ? 'line-through' : 'none',
@@ -130,7 +130,6 @@ class TodoItem extends Component {
       // '&:nth-of-type(odd)': {
       //   backgroundColor:'red',
       // },
-
       // }
     }
 
