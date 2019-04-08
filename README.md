@@ -37,8 +37,8 @@ A full stack app that allow users to create a list of of to-do items.  This app 
   ## API Endpoints
   | Verb   | URI Pattern            | Controller#Action |
   |--------|------------------------|-------------------|
-  | GET    | `/items`               | `items#index`     |
-  | POST   | `/items`               | `items#create`    |
-  | GET    | `/items/:id`           | `items#show`      |
-  | PATCH  | `/items/:id`           | `items#update`    |
-  | DELETE | `/items/:id`           | `items#destroy`   |
+  | GET    | `/todos`               | `todos#index`     |
+  | POST   | `/todos`               | `todos#create`    |
+  | GET    | `/todos/:id`           | `todos#show`      |
+  | PATCH  | `/todos/:id`           | `todos#update`    |
+  | DELETE | `/todos/:id`           | `todos#destroy`   |
