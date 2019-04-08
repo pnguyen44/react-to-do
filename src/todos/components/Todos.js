@@ -41,17 +41,16 @@ componentDidUpdate(prevProps) {
 }
 
   render() {
-
-    const styles = theme => ({
+    const styles ={
       root: {
         width: '100%',
-        marginTop: theme.spacing.unit * 3,
+        // marginTop: theme.spacing.unit * 3,
         // overflowX: 'auto',
       },
       table: {
         minWidth: 100,
       },
-    });
+    }
 
     const {flash, setTodos} = this.props
     const {todos} = this.state

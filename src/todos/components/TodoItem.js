@@ -112,42 +112,43 @@ class TodoItem extends Component {
     this.toggleEditable()
   }
 
-render() {
+  render() {
 
-  const todoStyles = {
-    backgroundColor: this.state.editable ? 'lightyellow' : null,
-    textDecoration: this.state.todo.completed ? 'line-through' : 'none',
-  }
+    const todoStyles = {
+      backgroundColor: this.state.editable ? 'lightyellow' : null,
+      textDecoration: this.state.todo.completed ? 'line-through' : 'none',
+    }
 
-  const customTableStyle =  {
-    background: '#3f51b530',
-    // padding: '10px',
-    // borderBottom: '1px black solid',
-    // fontStyle: 'italic',
-    // color: 'grey',
-    // textDecoration: this.state.todo.completed ? 'line-through' : 'none',
-    // row: {
-    '&:nth-of-type(odd)': {
-      backgroundColor:'red',
-    },
-    // }
-}
+    const customTableStyle =  {
+      backgroundColor: '#3f51b530',
+      // padding: '10px',
+      // borderBottom: '1px black solid',
+      // fontStyle: 'italic',
+      // color: 'grey',
+      // textDecoration: this.state.todo.completed ? 'line-through' : 'none',
+      // row: {
+      '&:nth-of-type(odd)': {
+        backgroundColor:'red',
+      },
+      // }
+    }
 
 
-  const btnStyle = {
-    background: 'rgba(0, 0, 0, 0)',
-    // color: 'lightred',
-    border: 'none',
-    fontSize: 25,
-    // padding: '0px 1px',
-    // float: 'right',
-    cursor: 'pointer',
-    fontWeight: 900,
-    justifyContent:'flex-end'
-  }
+    const btnStyle = {
+      background: 'rgba(0, 0, 0, 0)',
+      // color: 'lightred',
+      border: 'none',
+      fontSize: 25,
+      // padding: '0px 1px',
+      // float: 'right',
+      cursor: 'pointer',
+      fontWeight: 900,
+      justifyContent:'flex-end'
+    }
 
-  const _id = this.props.item._id
-  const {editable} = this.state
+    const _id = this.props.item._id
+    const {editable} = this.state
+
     return (
       <TableRow style={customTableStyle}>
         <TableCell padding="checkbox" align='left'>
@@ -207,7 +208,7 @@ render() {
             </TableCell>
           </React.Fragment>
         }
-        </TableRow>
+      </TableRow>
     )
   }
 }
