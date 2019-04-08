@@ -15,7 +15,7 @@ a {
 }
 
 .container {
-  padding: 50px 1rem;
+  padding: 50px 2rem;
 }
 
 .btn {
@@ -27,16 +27,16 @@ a {
   cursor: pointer;
 }
 
-.btn:hover {
+/* .btn:hover {
   background: #666;
-}
+} */
 .todo-list {
   overflow: scroll;
   height: 600px;
 }
-.todo-list :hover {
+/* .todo-list :hover {
   background-color: #d5d8e5c4;
-}
+} */
 
 .flash-error {
   background-color: red;

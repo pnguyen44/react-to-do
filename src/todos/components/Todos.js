@@ -1,6 +1,13 @@
 import React , {Component} from 'react'
 import TodoItem from './TodoItem'
 import {getTodos} from '../api'
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 
 class Todos extends Component {
@@ -34,6 +41,18 @@ componentDidUpdate(prevProps) {
 }
 
   render() {
+
+    const styles = theme => ({
+      root: {
+        width: '100%',
+        marginTop: theme.spacing.unit * 3,
+        // overflowX: 'auto',
+      },
+      table: {
+        minWidth: 100,
+      },
+    });
+
     const {flash, setTodos} = this.props
     const {todos} = this.state
     const todosComponent = todos.map(item => {
@@ -47,9 +66,15 @@ componentDidUpdate(prevProps) {
     })
 
     return (
-      <React.Fragment>
-      {todosComponent}
-      </React.Fragment>
+      <Paper style={styles.root}>
+        <Table style={styles.table}>
+          <TableHead>
+          </TableHead>
+          <TableBody>
+            {todosComponent}
+          </TableBody>
+        </Table>
+      </Paper>
     )
   }
 }

@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import ContentEditable from "react-contenteditable";
 import {updateCompleted, deleteTodo, renameTodo} from '../api'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 class TodoItem extends Component {
   constructor(props) {
@@ -108,28 +113,34 @@ class TodoItem extends Component {
   }
 
 render() {
-  const todoStyles =  {
-    background: '#3f51b530',
-    padding: '10px',
-    borderBottom: '1px white solid',
-    // fontStyle: 'italic',
-    // color: 'grey',
-    // textDecoration: this.state.todo.completed ? 'line-through' : 'none'
+
+  const todoStyles = {
+    backgroundColor: this.state.editable ? 'lightyellow' : null,
+    textDecoration: this.state.todo.completed ? 'line-through' : 'none',
   }
 
-  const styles = {
-    editable: {
-      backgroundColor: 'lightyellow',
+  const customTableStyle =  {
+    background: '#3f51b530',
+    // padding: '10px',
+    // borderBottom: '1px black solid',
+    // fontStyle: 'italic',
+    // color: 'grey',
+    // textDecoration: this.state.todo.completed ? 'line-through' : 'none',
+    // row: {
+    '&:nth-of-type(odd)': {
+      backgroundColor:'red',
     },
-  }
+    // }
+}
+
 
   const btnStyle = {
     background: 'rgba(0, 0, 0, 0)',
     // color: 'lightred',
     border: 'none',
     fontSize: 25,
-    padding: '0px 1px',
-    float: 'right',
+    // padding: '0px 1px',
+    // float: 'right',
     cursor: 'pointer',
     fontWeight: 900,
     justifyContent:'flex-end'
@@ -138,54 +149,65 @@ render() {
   const _id = this.props.item._id
   const {editable} = this.state
     return (
-      <div style={todoStyles}>
+      <TableRow style={customTableStyle}>
+        <TableCell padding="checkbox" align='left'>
         <input
-          type='checkbox'
-          checked={this.props.item.completed}
-          onChange={this.onUpdateCompleted.bind(this,_id,this.props.item)}
-        />&nbsp;&nbsp;
-        <ContentEditable
-          html={this.state.name} // innerHTML of the editable div
-          disabled={!this.state.editable} // use true to disable edition
-          onChange={this.handleChange} // handle innerHTML change
-          onPaste={this.pasteAsPlainText}
-          onKeyPress={this.disableNewlines}
-          tagName='span'
-          className='todo-item-name'
-          style={this.state.editable ? styles.editable : null }
+        type='checkbox'
+        checked={this.props.item.completed}
+        onChange={this.onUpdateCompleted.bind(this,_id,this.props.item)}
         />
+        </TableCell>
+        <TableCell padding="none">
+        <ContentEditable
+        html={this.state.name} // innerHTML of the editable div
+        disabled={!this.state.editable} // use true to disable edition
+        onChange={this.handleChange} // handle innerHTML change
+        onPaste={this.pasteAsPlainText}
+        onKeyPress={this.disableNewlines}
+        tagName='span'
+        className='todo-item-name'
+        style={todoStyles}
+        />
+        </TableCell>
+
         { !editable ?
-            <React.Fragment>
+          <React.Fragment>
+            <TableCell align='right' padding='none'>
+              <button
+                style={btnStyle}
+                className="material-icons"
+                onClick={this.toggleEditable}>edit
+              </button>
+            </TableCell>
+            <TableCell align='right' padding='none'>
               <button
               style={btnStyle}
               className="material-icons"
               onClick={this.onDeleteTodo.bind(this, this.id)}>
               delete
               </button>
-
-              <button
-                style={btnStyle}
-                className="material-icons"
-                onClick={this.toggleEditable}>edit
-              </button>
-            </React.Fragment>
-            :
-            <React.Fragment>
-              <button
-              style={btnStyle}
-              className="material-icons"
-              onClick={this.handleCancelClick}>cancel
-              </button>
-
+            </TableCell>
+          </React.Fragment>
+          :
+          <React.Fragment>
+            <TableCell align='right' padding='none'>
               <button
               style={btnStyle}
               type='submit'
               className="material-icons"
               onClick={this.handleDoneBtnClick}>done
               </button>
-            </React.Fragment>
-          }
-      </div>
+            </TableCell>
+            <TableCell align='right' padding='none'>
+              <button
+              style={btnStyle}
+              className="material-icons"
+              onClick={this.handleCancelClick}>cancel
+              </button>
+            </TableCell>
+          </React.Fragment>
+        }
+        </TableRow>
     )
   }
 }
