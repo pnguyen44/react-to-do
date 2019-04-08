@@ -2,7 +2,7 @@ import apiUrl from '../apiConfig'
 
 
 export const updateCompleted = (id,item) => {
-  return fetch(apiUrl + '/items/' + id, {
+  return fetch(apiUrl + '/todos/' + id, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -14,7 +14,7 @@ export const updateCompleted = (id,item) => {
 }
 
 export const getTodos = () => {
-  return fetch(apiUrl + '/items', {
+  return fetch(apiUrl + '/todos', {
     headers: {
       'Content-Type': 'application/json',
     }
@@ -22,7 +22,7 @@ export const getTodos = () => {
 }
 
 export const getTodo = (id) => {
-  return fetch(apiUrl + '/items/' + id, {
+  return fetch(apiUrl + '/todos/' + id, {
     headers: {
       'Content-Type': 'application/json',
     }
@@ -30,7 +30,7 @@ export const getTodo = (id) => {
 }
 
 export const deleteTodo  = (id) => {
-  return  fetch(apiUrl + '/items/' + id, {
+  return  fetch(apiUrl + '/todos/' + id, {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export const deleteTodo  = (id) => {
 }
 
 export const createTodo = name => {
-  return fetch(apiUrl + '/items/', {
+  return fetch(apiUrl + '/todos/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ export const createTodo = name => {
 }
 
 export const renameTodo = (id, newName) => {
-  return fetch(apiUrl + '/items/' + id, {
+  return fetch(apiUrl + '/todos/' + id, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
