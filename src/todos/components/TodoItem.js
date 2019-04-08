@@ -127,9 +127,9 @@ class TodoItem extends Component {
       // color: 'grey',
       // textDecoration: this.state.todo.completed ? 'line-through' : 'none',
       // row: {
-      '&:nth-of-type(odd)': {
-        backgroundColor:'red',
-      },
+      // '&:nth-of-type(odd)': {
+      //   backgroundColor:'red',
+      // },
 
       // }
     }
