@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import ContentEditable from "react-contenteditable";
 import {updateCompleted, deleteTodo, renameTodo} from '../api'
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
+// import Table from '@material-ui/core/Table';
+// import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
+// import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 class TodoItem extends Component {
