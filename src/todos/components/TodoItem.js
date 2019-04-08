@@ -114,9 +114,9 @@ render() {
     borderBottom: '1px white solid',
     // fontStyle: 'italic',
     // color: 'grey',
-    // textDecoration: this.props.item.completed ? 'line-through' : 'none'
+    // textDecoration: this.state.todo.completed ? 'line-through' : 'none'
   }
-  
+
   const styles = {
     editable: {
       backgroundColor: 'lightyellow',
