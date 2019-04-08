@@ -56,3 +56,8 @@ a {
   min-width: 180px;
   display: inline-block;
 }
+
+
+input[type=checkbox]:checked + span.todo-item-name{
+  text-decoration: line-through;
+}
