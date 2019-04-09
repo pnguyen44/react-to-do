@@ -42,13 +42,13 @@ class NewTodoItem extends Component {
   render() {
     return (
       <div>
-        <form style={{display: 'flex'}} onSubmit={this.handleSubmit}>
+        <form style={styles.form} onSubmit={this.handleSubmit}>
           <input
             type='text'
             name='name'
             required
             value={this.state.name}
-            style={{flex: '36', padding: '10px'}}
+            style={styles.nameInput}
             placeholder='Add item'
             onChange={this.handleChange}
           />
@@ -63,7 +63,18 @@ class NewTodoItem extends Component {
       </div>
     )
   }
+}
 
+const styles = {
+  nameInput: {
+    border: '1px solid black',
+    flex: '36',
+    padding: '10px'
+  },
+  form: {
+    display: 'flex',
+    marginBottom: 20
+  }
 }
 
 export default NewTodoItem
