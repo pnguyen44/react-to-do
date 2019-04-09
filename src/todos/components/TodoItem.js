@@ -21,15 +21,6 @@ const tableStyles =  {
         },
         // }
   },
-  checkboxCol: {
-    width: '1%;'
-  },
-  btnCol: {
-    width: '1%;'
-  },
-  nameCol: {
-    paddingRight: 20
-  }
 }
 
 class TodoItem extends Component {
@@ -141,7 +132,7 @@ class TodoItem extends Component {
     const todoStyles = {
       backgroundColor: this.state.editable ? 'lightyellow' : null,
       textDecoration: this.state.todo.completed ? 'line-through' : 'none',
-      minWidth: 180,
+      minWidth: 10,
       display: 'inline-block'
     }
 
@@ -162,46 +153,45 @@ class TodoItem extends Component {
     const { classes } = this.props;
     return (
       <TableRow className={classNames(classes.customTableStyle)} hover>
-        <TableCell padding="checkbox" align='left'  className={classes.checkboxCol}>
+        <TableCell padding="checkbox" align='center'  className={classes.checkboxCol}>
         <input
         type='checkbox'
         checked={this.props.item.completed}
         onChange={this.onUpdateCompleted.bind(this,_id,this.props.item)}
         />
         </TableCell>
-        <TableCell align='left'padding='none' className={classes.nameCol}>
-        <ContentEditable
-        html={this.state.name} // innerHTML of the editable div
-        disabled={!this.state.editable} // use true to disable edition
-        onChange={this.handleChange} // handle innerHTML change
-        onPaste={this.pasteAsPlainText}
-        onKeyPress={this.disableNewlines}
-        tagName='span'
-        style={todoStyles}
-        />
+        <TableCell align='left'padding='none'>
+          <ContentEditable
+          html={this.state.name} // innerHTML of the editable div
+          disabled={!this.state.editable} // use true to disable edition
+          onChange={this.handleChange} // handle innerHTML change
+          onPaste={this.pasteAsPlainText}
+          onKeyPress={this.disableNewlines}
+          tagName='span'
+          style={todoStyles}
+          />
         </TableCell>
 
         { !editable ?
           <React.Fragment>
-            <TableCell align='right' padding='none' className={classes.btnCol}>
+            <TableCell align='center' padding='none'>
               <button
                 style={btnStyle}
                 className="material-icons"
                 onClick={this.toggleEditable}>edit
               </button>
             </TableCell>
-            <TableCell align='right' className={classes.btnCol}>
+            <TableCell align='center' padding='none'>
               <button
               style={btnStyle}
               className="material-icons"
-              onClick={this.onDeleteTodo.bind(this, this.id)}>
-              delete
+              onClick={this.onDeleteTodo.bind(this, this.id)}> delete
               </button>
             </TableCell>
           </React.Fragment>
           :
           <React.Fragment>
-            <TableCell align='right' padding='none'>
+            <TableCell align='center' padding='none'>
               <button
               style={btnStyle}
               type='submit'
@@ -209,7 +199,7 @@ class TodoItem extends Component {
               onClick={this.handleDoneBtnClick}>done
               </button>
             </TableCell>
-            <TableCell align='right'>
+            <TableCell align='center' padding='none'>
               <button
               style={btnStyle}
               className="material-icons"
