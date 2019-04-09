@@ -20,9 +20,15 @@ const styles =  {
           backgroundColor:'#dae4f2',
         },
         // }
-      btnCol: {
-        width: '5%;'
-      }
+  },
+  checkboxCol: {
+    width: '1%;'
+  },
+  btnCol: {
+    width: '1%;'
+  },
+  nameCol: {
+    paddingRight: 20
   }
 }
 
@@ -156,14 +162,14 @@ class TodoItem extends Component {
     const { classes } = this.props;
     return (
       <TableRow className={classNames(classes.customTableStyle)} hover>
-        <TableCell padding="none" align='center'>
+        <TableCell padding="checkbox" align='left'  className={classes.checkboxCol}>
         <input
         type='checkbox'
         checked={this.props.item.completed}
         onChange={this.onUpdateCompleted.bind(this,_id,this.props.item)}
         />
         </TableCell>
-        <TableCell padding="none" align='left'>
+        <TableCell align='left'padding='none' className={classes.nameCol}>
         <ContentEditable
         html={this.state.name} // innerHTML of the editable div
         disabled={!this.state.editable} // use true to disable edition
@@ -171,14 +177,13 @@ class TodoItem extends Component {
         onPaste={this.pasteAsPlainText}
         onKeyPress={this.disableNewlines}
         tagName='span'
-        className='todo-item-name'
         style={todoStyles}
         />
         </TableCell>
 
         { !editable ?
           <React.Fragment>
-            <TableCell align='right' padding='none'>
+            <TableCell align='right' padding='none' className={classes.btnCol}>
               <button
                 style={btnStyle}
                 className="material-icons"
