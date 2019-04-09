@@ -24,6 +24,9 @@ const styles =  {
           backgroundColor:'#dae4f2',
         },
         // }
+      btnCol: {
+        width: '5%;'
+      }
   }
 }
 
@@ -136,6 +139,8 @@ class TodoItem extends Component {
     const todoStyles = {
       backgroundColor: this.state.editable ? 'lightyellow' : null,
       textDecoration: this.state.todo.completed ? 'line-through' : 'none',
+      minWidth: 180,
+      display: 'inline-block'
     }
 
     const btnStyle = {
@@ -154,15 +159,15 @@ class TodoItem extends Component {
     const {editable} = this.state
     const { classes } = this.props;
     return (
-      <TableRow className={classNames(classes.customTableStyle)}>
-        <TableCell padding="checkbox" align='left'>
+      <TableRow className={classNames(classes.customTableStyle)} hover>
+        <TableCell padding="none" align='center'>
         <input
         type='checkbox'
         checked={this.props.item.completed}
         onChange={this.onUpdateCompleted.bind(this,_id,this.props.item)}
         />
         </TableCell>
-        <TableCell padding="none">
+        <TableCell padding="none" align='left'>
         <ContentEditable
         html={this.state.name} // innerHTML of the editable div
         disabled={!this.state.editable} // use true to disable edition
@@ -184,7 +189,7 @@ class TodoItem extends Component {
                 onClick={this.toggleEditable}>edit
               </button>
             </TableCell>
-            <TableCell align='right' padding='none'>
+            <TableCell align='right' className={classes.btnCol}>
               <button
               style={btnStyle}
               className="material-icons"
@@ -203,7 +208,7 @@ class TodoItem extends Component {
               onClick={this.handleDoneBtnClick}>done
               </button>
             </TableCell>
-            <TableCell align='right' padding='none'>
+            <TableCell align='right'>
               <button
               style={btnStyle}
               className="material-icons"
