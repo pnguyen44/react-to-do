@@ -15,10 +15,6 @@ import classNames from 'classnames';
 const styles =  {
   customTableStyle: {
     backgroundColor: '#d9e4f29e',
-    // padding: '10px',
-    // borderBottom: '2px white solid',
-    // fontStyle: 'italic',
-    // color: 'grey',
     // row: {
       '&:nth-of-type(odd)': {
           backgroundColor:'#dae4f2',
