@@ -12,7 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/styles';
 import classNames from 'classnames';
 
-const styles =  {
+const tableStyles =  {
   customTableStyle: {
     backgroundColor: '#d9e4f29e',
     // row: {
@@ -228,5 +228,5 @@ TodoItem.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(TodoItem);
+export default withStyles(tableStyles)(TodoItem);
 // export default TodoItem
