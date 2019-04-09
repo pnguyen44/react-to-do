@@ -21,6 +21,12 @@ const tableStyles =  {
         },
         // }
   },
+  btnCol: {
+    width: '1%'
+  },
+  checkboxCol: {
+    width: '1%'
+  },
 }
 
 class TodoItem extends Component {
@@ -174,14 +180,14 @@ class TodoItem extends Component {
 
         { !editable ?
           <React.Fragment>
-            <TableCell align='center' padding='none'>
+            <TableCell align='center' padding='none'className={classes.btnCol}>
               <button
                 style={btnStyle}
                 className="material-icons"
                 onClick={this.toggleEditable}>edit
               </button>
             </TableCell>
-            <TableCell align='center' padding='none'>
+            <TableCell align='center' padding='none'className={classes.btnCol}>
               <button
               style={btnStyle}
               className="material-icons"
@@ -191,7 +197,7 @@ class TodoItem extends Component {
           </React.Fragment>
           :
           <React.Fragment>
-            <TableCell align='center' padding='none'>
+            <TableCell align='center' padding='none'className={classes.btnCol}>
               <button
               style={btnStyle}
               type='submit'
@@ -199,7 +205,7 @@ class TodoItem extends Component {
               onClick={this.handleDoneBtnClick}>done
               </button>
             </TableCell>
-            <TableCell align='center' padding='none'>
+            <TableCell align='center' padding='none'className={classes.btnCol}>
               <button
               style={btnStyle}
               className="material-icons"
