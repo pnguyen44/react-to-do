@@ -2,11 +2,30 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import ContentEditable from "react-contenteditable";
 import {updateCompleted, deleteTodo, renameTodo} from '../api'
+
 // import Table from '@material-ui/core/Table';
 // import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 // import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+
+import { withStyles } from '@material-ui/styles';
+import classNames from 'classnames';
+
+const styles =  {
+  customTableStyle: {
+    backgroundColor: '#d9e4f29e',
+    // padding: '10px',
+    // borderBottom: '2px white solid',
+    // fontStyle: 'italic',
+    // color: 'grey',
+    // row: {
+      '&:nth-of-type(odd)': {
+          backgroundColor:'#dae4f2',
+        },
+        // }
+  }
+}
 
 class TodoItem extends Component {
   constructor(props) {
@@ -119,21 +138,6 @@ class TodoItem extends Component {
       textDecoration: this.state.todo.completed ? 'line-through' : 'none',
     }
 
-    const customTableStyle =  {
-      backgroundColor: '#3f51b530',
-      // padding: '10px',
-      borderBottom: '2px white solid',
-      // fontStyle: 'italic',
-      // color: 'grey',
-      // textDecoration: this.state.todo.completed ? 'line-through' : 'none',
-      // row: {
-      // '&:nth-of-type(odd)': {
-      //   backgroundColor:'red',
-      // },
-      // }
-    }
-
-
     const btnStyle = {
       background: 'rgba(0, 0, 0, 0)',
       // color: 'lightred',
@@ -148,9 +152,9 @@ class TodoItem extends Component {
 
     const _id = this.props.item._id
     const {editable} = this.state
-
+    const { classes } = this.props;
     return (
-      <TableRow style={customTableStyle}>
+      <TableRow className={classNames(classes.customTableStyle)}>
         <TableCell padding="checkbox" align='left'>
         <input
         type='checkbox'
@@ -215,7 +219,8 @@ class TodoItem extends Component {
 
 TodoItem.propTypes = {
   item: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
 }
 
-
-export default TodoItem
+export default withStyles(styles)(TodoItem);
+// export default TodoItem

@@ -9,6 +9,24 @@ import TableHead from '@material-ui/core/TableHead';
 // import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+// import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+
+
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 3,
+  },
+  table: {
+    minWidth: 150,
+  },
+  tableWrapper: {
+    overflowX: 'auto',
+  },
+});
 
 class Todos extends Component {
   constructor(props) {
@@ -41,41 +59,38 @@ componentDidUpdate(prevProps) {
 }
 
   render() {
-    const styles ={
-      root: {
-        width: '100%',
-        // marginTop: theme.spacing.unit * 3,
-        // overflowX: 'auto',
-      },
-      table: {
-        minWidth: 100,
-      },
-    }
 
     const {flash, setTodos} = this.props
     const {todos} = this.state
+    const { classes } = this.props;
     const todosComponent = todos.map(item => {
-    return <TodoItem
-      key={item._id}
-      item={item}
-      flash={flash}
-      todos={todos}
-      setTodos={setTodos}
-      />
-    })
+      return <TodoItem
+        key={item._id}
+        item={item}
+        flash={flash}
+        todos={todos}
+        setTodos={setTodos}
+        />
+      })
 
     return (
-      <Paper style={styles.root}>
-        <Table style={styles.table}>
+      <Paper className={classes.root}>
+        <div className={classes.tableWrapper}>
+        <Table className={classes.table}>
           <TableHead>
           </TableHead>
           <TableBody>
             {todosComponent}
           </TableBody>
         </Table>
+        </div>
       </Paper>
     )
   }
 }
 
-export default Todos
+Todos.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Todos);
