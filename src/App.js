@@ -4,7 +4,7 @@ import './App.css';
 // import TodoItem from './todos/components/TodoItem'
 import NavBar from './navBar/NavBar'
 import NewTodoItem from './todos/components/NewTodoItem'
-import About from './about/About'
+// import About from './about/About'
 // import {updateCompleted, getTodos, deleteTodo, createTodo, renameTodo} from './todos/api'
 import Todos from './todos/components/Todos'
 import Home from './home/Home'
@@ -54,7 +54,6 @@ class App extends Component {
                     </div>
                   </React.Fragment>
                 )}/>
-              <Route path='/about' component={About}/>
           </div>
       </Router>
     );
