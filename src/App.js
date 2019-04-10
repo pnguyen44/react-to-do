@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route } from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css';
 // import TodoItem from './todos/components/TodoItem'
 import NavBar from './navBar/NavBar'
@@ -33,15 +33,17 @@ class App extends Component {
   render() {
     const {flashMessage, flashType, todos} = this.state
     return (
-      <Router>
+      <Router basename='on-track'>
             <NavBar/>
             <div className='container'>
               {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
+
                 <Route exact path='/' render={(props) => (
                   <Home
                   {...props}
                   />
                 )}/>
+                <Switch>
                 <Route exact path='/Todos' render={props => (
                   <React.Fragment>
                     <NewTodoItem setTodos={this.setTodos} todos={todos}/>
@@ -54,6 +56,7 @@ class App extends Component {
                     </div>
                   </React.Fragment>
                 )}/>
+              </Switch>
           </div>
       </Router>
     );
