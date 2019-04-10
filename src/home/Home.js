@@ -4,16 +4,17 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
   root: {
     // ...theme.mixins.gutters(),
-    // paddingTop: theme.spacing.unit * 4,
-    // paddingBottom: theme.spacing.unit * 4,
+    paddingTop: theme.spacing.unit * 4,
+    paddingBottom: theme.spacing.unit * 4,
     backgroundColor: '#d9e4f2',
     textAlign: 'center',
-    margin:'30px 250px',
-    padding: 50,
+    // margin:'30px 250px',
+    // padding: 50,
 
   },
 });
@@ -32,6 +33,7 @@ class Home extends React.Component {
 
     return (
       <div>
+      <Grid item xs={12}>
         <Paper className={classes.root} elevation={1}>
           <Typography variant="h2" component="h3">
             On Track
@@ -47,7 +49,7 @@ class Home extends React.Component {
             Get Started
           </Button>
         </Paper>
-
+      </Grid>
       </div>
     )
   }
