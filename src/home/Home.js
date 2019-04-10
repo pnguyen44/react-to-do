@@ -50,7 +50,7 @@ class Home extends React.Component {
             A simple todo app.
           </Typography>
           <br/>
-          <Button variant="contained" color="primary" component={Link} to="/Todos">
+          <Button variant="contained" color="primary" component={Link} to="/todos">
             Get Started
           </Button>
         </Paper>

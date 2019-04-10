@@ -38,7 +38,7 @@ const NavBar = () => {
           </Typography>
 
           <Link className='material-icons' style={styles.link} to='/'>home</Link>
-          <Link style={styles.link} to='/Todos'>Todos</Link>
+          <Link style={styles.link} to='/todos'>Todos</Link>
         </Toolbar>
       </AppBar>
     </div>
