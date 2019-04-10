@@ -7,6 +7,7 @@ import NewTodoItem from './todos/components/NewTodoItem'
 import About from './about/About'
 // import {updateCompleted, getTodos, deleteTodo, createTodo, renameTodo} from './todos/api'
 import Todos from './todos/components/Todos'
+import Home from './home/Home'
 
 
 class App extends Component {
@@ -37,7 +38,7 @@ class App extends Component {
             <div className='container'>
               {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
                 <Route exact path='/' render={() => (
-                  <About/>
+                  <Home/>
                 )}/>
                 <Route exact path='/Todos' render={props => (
                   <React.Fragment>
