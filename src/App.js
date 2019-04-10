@@ -32,11 +32,14 @@ class App extends Component {
   render() {
     const {flashMessage, flashType, todos} = this.state
     return (
-      <Router basename='/on-track'>
+      <Router>
             <NavBar/>
             <div className='container'>
               {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-                <Route exact path='/' render={props => (
+                <Route exact path='/' render={() => (
+                  <About/>
+                )}/>
+                <Route exact path='/Todos' render={props => (
                   <React.Fragment>
                     <NewTodoItem setTodos={this.setTodos} todos={todos}/>
                     <div className='todo-list'>
