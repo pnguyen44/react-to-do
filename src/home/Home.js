@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom'
 
 const styles = theme => ({
   root: {
@@ -34,9 +35,6 @@ class Home extends React.Component {
     router: PropTypes.object
   }
 
-  handleclick = () => {
-    this.props.history.push(`/Todos`)
-  }
   render() {
     const {classes} = this.props
 
@@ -52,9 +50,7 @@ class Home extends React.Component {
             A simple todo app.
           </Typography>
           <br/>
-          <Button variant="contained" color="primary" className={classes.button}
-          onClick={this.handleclick}
-          >
+          <Button variant="contained" color="primary" component={Link} to="/Todos">
             Get Started
           </Button>
         </Paper>
