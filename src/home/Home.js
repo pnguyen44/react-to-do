@@ -8,14 +8,23 @@ import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
   root: {
-    // ...theme.mixins.gutters(),
-    paddingTop: theme.spacing.unit * 4,
-    paddingBottom: theme.spacing.unit * 4,
     backgroundColor: '#d9e4f2',
     textAlign: 'center',
-    // margin:'30px 250px',
-    // padding: 50,
 
+    [theme.breakpoints.up('lg')]: {
+      margin:'30px 250px',
+      padding: 50,
+    },
+
+    [theme.breakpoints.up('md')]: {
+      margin:'30px 250px',
+      padding: 50,
+    },
+
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: theme.spacing.unit * 4,
+      paddingBottom: theme.spacing.unit * 4,
+    },
   },
 });
 
