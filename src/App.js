@@ -37,8 +37,10 @@ class App extends Component {
             <NavBar/>
             <div className='container'>
               {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-                <Route exact path='/' render={() => (
-                  <Home/>
+                <Route exact path='/' render={(props) => (
+                  <Home
+                  {...props}
+                  />
                 )}/>
                 <Route exact path='/Todos' render={props => (
                   <React.Fragment>

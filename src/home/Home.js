@@ -12,7 +12,7 @@ const styles = theme => ({
     // paddingBottom: theme.spacing.unit * 4,
     backgroundColor: '#d9e4f2',
     textAlign: 'center',
-    margin:'50px 250px',
+    margin:'30px 250px',
     padding: 50,
 
   },
@@ -20,9 +20,12 @@ const styles = theme => ({
 
 
 class Home extends React.Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
 
   handleclick = () => {
-    console.log('clicked')
+    this.props.history.push(`/Todos`)
   }
   render() {
     const {classes} = this.props
