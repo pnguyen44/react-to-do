@@ -44,7 +44,7 @@ class App extends Component {
                   />
                 )}/>
                 <Switch>
-                <Route exact path='/Todos' render={props => (
+                <Route exact path='/todos' render={props => (
                   <React.Fragment>
                     <NewTodoItem setTodos={this.setTodos} todos={todos}/>
                     <div className='todo-list'>
