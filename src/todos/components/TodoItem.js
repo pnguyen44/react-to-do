@@ -36,7 +36,7 @@ class TodoItem extends Component {
       editable: false ,
       name: props.item.name,
       todo: props.item,
-      todos: []
+      todos: [],
     };
     this.id = this.props.item._id
   }
@@ -103,14 +103,14 @@ class TodoItem extends Component {
         .replace(/&lt;/g, '<')
         .replace(/<br>/g, '')
     }
-    const {name,value} = e.target
+    const {value} = e.target
     let modifiedVal
     if(value) {
        modifiedVal = trimSpaces(value)
     } else {
       modifiedVal = ''
     }
-    this.setState({[name]: modifiedVal})
+    this.setState({name: modifiedVal})
   }
 
   toggleEditable = () => {
@@ -168,7 +168,6 @@ class TodoItem extends Component {
         </TableCell>
         <TableCell align='left'padding='none'>
           <ContentEditable
-          name='name'
           html={this.state.name} // innerHTML of the editable div
           disabled={!this.state.editable} // use true to disable edition
           onChange={this.handleChange} // handle innerHTML change
