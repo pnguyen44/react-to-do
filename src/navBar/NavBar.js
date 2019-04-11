@@ -16,7 +16,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MenuItem from '@material-ui/core/MenuItem';
 
 
-const styles = {
+const styles = theme => ({
   root: {
     flexGrow: 1,
   },
@@ -31,8 +31,18 @@ const styles = {
     float: 'right',
     marginRight: 30,
     color: 'white'
+  },
+  mobileMenu: {
+    [theme.breakpoints.between('md', 'lg')]: {
+      display: 'none',
+    },
+  },
+  desktopMenu: {
+    [theme.breakpoints.between('xs', 'sm')]: {
+      display: 'none',
+    },
   }
-};
+})
 
 class NavBar extends React.Component {
   state = {
@@ -40,11 +50,11 @@ class NavBar extends React.Component {
     mobileAnchorEl: null
   };
 
-  handleMobileMenuClick = event => {
+  handleMobileMenuOpen = event => {
     this.setState({ mobileAnchorEl: event.currentTarget });
   };
 
-  handleClose = () => {
+  handleMobileMenuClose = () => {
     this.setState({ mobileAnchorEl: null });
   };
 
@@ -57,21 +67,18 @@ class NavBar extends React.Component {
         id="simple-menu"
         anchorEl={mobileAnchorEl}
         open={Boolean(mobileAnchorEl)}
-        onClose={this.handleClose}
+        onClose={this.handleMobileMenuClose}
       >
 
       <Link to='/'>
-        <MenuItem onClick={this.handleClose}>Home</MenuItem>
+        <MenuItem onClick={this.handleMobileMenuClose}>Home</MenuItem>
       </Link>
 
       <Link to='/todos'>
-        <MenuItem onClick={this.handleClose}>Todos</MenuItem>
+        <MenuItem onClick={this.handleMobileMenuClose}>Todos</MenuItem>
       </Link>
       </Menu>
     )
-
-
-    const open = Boolean(mobileAnchorEl);
 
     return(
       <div className={classes.root}>
@@ -81,21 +88,20 @@ class NavBar extends React.Component {
             <Typography variant="h6" color="inherit" className={classes.grow}>
               On Track
             </Typography>
+            <div className={classes.desktopMenu}>
+              <Link className={classNames('material-icons', classes.link)} to='/'>home</Link>
+              <Link className={classes.link} to='/todos'>Todos</Link>
+            </div>
+            <div className={classes.mobileMenu}>
+              <IconButton
+                aria-haspopup="true"
+                onClick={this.handleMobileMenuOpen}
+                color='inherit'
+              >
+                <MoreVertIcon />
+              </IconButton>
 
-            <Link className={classNames('material-icons', classes.link)} to='/'>home</Link>
-            <Link style={styles.link} to='/todos'>Todos</Link>
-
-            <div>
-            <IconButton
-              aria-label="More"
-              aria-owns={open ? 'long-menu' : undefined}
-              aria-haspopup="true"
-              onClick={this.handleMobileMenuClick}
-            >
-              <MoreVertIcon />
-            </IconButton>
-
-            {renderMobileMenu}
+              {renderMobileMenu}
             </div>
           </Toolbar>
         </AppBar>
