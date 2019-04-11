@@ -67,7 +67,7 @@ class NavBar extends React.Component {
       >
 
       <Link to='/'>
-        <MenuItem className={classes.menuItem} onClick={this.handleMobileMenuClose}>Home</MenuItem>
+        <MenuItem onClick={this.handleMobileMenuClose}>Home</MenuItem>
       </Link>
 
       <Link to='/todos'>
