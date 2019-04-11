@@ -10,11 +10,12 @@ import Typography from '@material-ui/core/Typography';
 // import MenuIcon from '@material-ui/icons/Menu';
 import classNames from 'classnames'
 
+
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import HomeIcon from '@material-ui/icons/Home'
 
 const styles = theme => ({
   root: {
@@ -25,7 +26,7 @@ const styles = theme => ({
   },
 
   link: {
-    float: 'left',
+    // float: 'left',
     marginRight: 30,
     color: 'white'
   },
@@ -85,7 +86,9 @@ class NavBar extends React.Component {
               On Track
             </Typography>
             <div className={classes.desktopMenu}>
-              <Link className={classNames('material-icons', classes.link)} to='/'>home</Link>
+              <IconButton color="inherit" className={classes.link} component={Link} to="/">
+                <HomeIcon />
+              </IconButton>
               <Link className={classes.link} to='/todos'>Todos</Link>
             </div>
             <div className={classes.mobileMenu}>
