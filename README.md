@@ -1,6 +1,6 @@
 # On Track
 
-A full stack app that allow users to add, update, and delete todo items.  This app was created using node.js, Express, React, JavaScript, HTML, CSS, and Material-UI.
+A full stack app that allow users to add, update, and delete to-do items.  This app was created using node.js, Express, React, JavaScript, HTML, CSS, and Material-UI.
 
 <img width="1440" alt="on-track app" src="https://i.imgur.com/TAHEaav.png">
 
