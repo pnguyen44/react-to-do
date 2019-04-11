@@ -26,7 +26,7 @@ const styles = theme => ({
   },
 
   link: {
-    marginRight: 30,
+    marginRight: 15,
     color: 'white'
   },
   mobileMenu: {
