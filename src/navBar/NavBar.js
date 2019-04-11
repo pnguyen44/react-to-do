@@ -28,7 +28,7 @@ const styles = theme => ({
     marginRight: 20,
   },
   link: {
-    float: 'right',
+    float: 'left',
     marginRight: 30,
     color: 'white'
   },
