@@ -12,19 +12,21 @@ const styles = theme => ({
     backgroundColor: '#d9e4f2',
     textAlign: 'center',
 
-    [theme.breakpoints.up('lg')]: {
-      margin:'30px 250px',
+    [theme.breakpoints.down('lg')]: {
+      margin:'80px 250px',
       padding: 50,
     },
 
-    [theme.breakpoints.up('md')]: {
-      margin:'30px 250px',
+    [theme.breakpoints.down('md')]: {
+      margin:'30px 150px',
       padding: 50,
     },
 
-    [theme.breakpoints.down('sm')]: {
-      paddingTop: theme.spacing.unit * 4,
-      paddingBottom: theme.spacing.unit * 4,
+    [theme.breakpoints.down('xs')]: {
+      margin:'20px 50px',
+      padding: 30
+      // paddingTop: theme.spacing.unit * 4,
+      // paddingBottom: theme.spacing.unit * 4,
     },
   },
 });
@@ -47,7 +49,7 @@ class Home extends React.Component {
           </Typography>
           <br/>
           <Typography component="h2" variant="headline" gutterBottom>
-            A simple todo app.
+            A simple to-do app.
           </Typography>
           <br/>
           <Button variant="contained" color="primary" component={Link} to="/todos">
