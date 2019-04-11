@@ -43,7 +43,6 @@ const styles = theme => ({
 
 class NavBar extends React.Component {
   state = {
-    // anchorEl: null,
     mobileAnchorEl: null
   };
 
