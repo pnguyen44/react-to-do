@@ -17,6 +17,7 @@ A full stack app that allow users to add, update, and delete to-do items.  This 
 - Users can add items to the to-do list
 - Users can mark completed items
 - Users can remove items from the list
+- Users can edit to-do items
 
 ## Technologies Used
 - Front End
