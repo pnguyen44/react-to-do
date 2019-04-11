@@ -3,6 +3,7 @@
 A full stack app that allow users to create a list of of to-do items.  This app was created using node.js, Express, React, JavaScript, HTML, CSS, and Material-UI.
 
 <img width="1440" alt="on-track app" src="./app_sreenshot.png">
+![Alt text](./app_sreenshot.png?raw=true "On Track App")
 
 ## Deployed apps and repositories
 | Resource   | URL            |
