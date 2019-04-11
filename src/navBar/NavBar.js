@@ -23,10 +23,7 @@ const styles = theme => ({
   grow: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
+
   link: {
     float: 'left',
     marginRight: 30,
@@ -71,7 +68,7 @@ class NavBar extends React.Component {
       >
 
       <Link to='/'>
-        <MenuItem onClick={this.handleMobileMenuClose}>Home</MenuItem>
+        <MenuItem className={classes.menuItem} onClick={this.handleMobileMenuClose}>Home</MenuItem>
       </Link>
 
       <Link to='/todos'>
