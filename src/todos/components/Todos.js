@@ -7,7 +7,6 @@ import TableBody from '@material-ui/core/TableBody';
 // import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 // import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 
 // import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -21,11 +20,12 @@ const styles = theme => ({
     // marginTop: theme.spacing.unit * 3,
     overflow: 'scroll',
     height: '600px',
+    padding: '0px 10rem',
+    [theme.breakpoints.down('sm')]: {
+      padding: '0px 1rem',
+    },
   },
   table: {
-    // minWidth: 50,
-  },
-  tableWrapper: {
     overflowX: 'auto',
   },
 });
@@ -76,8 +76,7 @@ componentDidUpdate(prevProps) {
       })
 
     return (
-      <Paper className={classes.root}>
-        <div className={classes.tableWrapper}>
+        <div className={classes.root}>
         <Table className={classes.table}>
           <TableHead>
           </TableHead>
@@ -86,7 +85,6 @@ componentDidUpdate(prevProps) {
           </TableBody>
         </Table>
         </div>
-      </Paper>
     )
   }
 }

@@ -1,5 +1,26 @@
 import React, { Component } from 'react'
 import {createTodo} from '../api'
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  root: {
+    padding: '50px 10rem 0px',
+    [theme.breakpoints.down('sm')]: {
+      padding: '30px 1rem 0px',
+    },
+  },
+  nameInput: {
+    border: '1px solid black',
+    flex: '36',
+    padding: '10px'
+  },
+  form: {
+    display: 'flex',
+    marginBottom: 20
+  }
+});
+
 
 class NewTodoItem extends Component {
   constructor(props) {
@@ -40,15 +61,16 @@ class NewTodoItem extends Component {
  }
 
   render() {
+    const {classes} = this.props
     return (
-      <div>
-        <form style={styles.form} onSubmit={this.handleSubmit}>
+      <div className={classes.root}>
+        <form className={classes.form} onSubmit={this.handleSubmit}>
           <input
             type='text'
             name='name'
             required
             value={this.state.name}
-            style={styles.nameInput}
+            className={classes.nameInput}
             placeholder='Add item'
             onChange={this.handleChange}
           />
@@ -65,16 +87,8 @@ class NewTodoItem extends Component {
   }
 }
 
-const styles = {
-  nameInput: {
-    border: '1px solid black',
-    flex: '36',
-    padding: '10px'
-  },
-  form: {
-    display: 'flex',
-    marginBottom: 20
-  }
-}
+NewTodoItem.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default NewTodoItem
+export default withStyles(styles)(NewTodoItem);
