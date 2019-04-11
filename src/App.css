@@ -27,14 +27,6 @@ a {
   cursor: pointer;
 }
 
-/* .btn:hover {
-  background: #666;
-} */
-.todo-list {
-  overflow: scroll;
-  height: 600px;
-}
-
 .flash-error {
   background-color: red;
 }
@@ -49,7 +41,3 @@ a {
   display: block;
   left: 25%;
 }
-
-/* input[type=checkbox]:checked + span.todo-item-name{
-  text-decoration: line-through;
-} */

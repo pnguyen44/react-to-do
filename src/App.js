@@ -47,13 +47,11 @@ class App extends Component {
                 <Route exact path='/todos' render={props => (
                   <React.Fragment>
                     <NewTodoItem setTodos={this.setTodos} todos={todos}/>
-                    <div className='todo-list'>
                     <Todos
                     flash={this.flash}
                     setTodos={this.setTodos}
                     todos={todos}
                     />
-                    </div>
                   </React.Fragment>
                 )}/>
               </Switch>
